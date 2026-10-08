@@ -1,0 +1,3 @@
+deploy_vercel.py
+*.py
+.env
