@@ -1,44 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CLUBME — Studio de Micro-SaaS Autonome & Foundry</title>
-  <meta name="description" content="Studio autonome d'ingénierie logicielle. Nous concevons et déployons 1 micro-outil de production toutes les 24 heures. Zéro coût de serveur. Zéro compromis.">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <title>Ownitt — Agence créative au Pays Basque : création de site internet & branding</title>
+  <meta name="description" content="Branding, identité visuelle, sites internet, publicité et campagnes qui marquent. Agence créative au Pays Basque.">
+  <link rel="icon" type="image/svg+xml" href="https://ownitt.fr/images/brand-kit/Ast%C3%A9risque/OWNitt_monogram_noir.svg">
 
-  <!-- Fonts directly inspired by ownitt.fr: Ultra-Condensed Display + High Fashion Italic Serif + Mono -->
+  <!-- Typekit & Google Fonts identical to ownitt.fr -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     /* ==========================================================================
-       OWNITT.FR EXACT AESTHETIC & INTERACTION SYSTEM FOR CLUBME.IN
-       - Custom Magnetic Mouse Cursor with context states ('SCROLL', 'VIEW')
-       - Velvet Black (#000000) ⇄ Warm Ivory Cream (#f5f2ea) Theme Shift
-       - Spinning 12-arm Acid Sunburst Asterisk
-       - Monumental Typography + Playfair Haute-Couture Italic Serif
-       - Pinned Showcase Cards with Right-hand Vertical Index (01, 02, 03, 04)
-       - Hover Stroke Kinetic Marquee
-       - Bottom Giant Wordmark Clipped at Viewport Edge
+       OWNITT.FR EXACT DESIGN SYSTEM & ANIMATION SUITE
+       - Fullscreen Intro with scaling logo transition
+       - Custom Magnetic Follower Cursor (Dot + Ring with 'SCROLL' / 'VOIR')
+       - Deep Velvet Black (#000000) ⇄ Warm Ivory Cream (#f6f4ee)
+       - Neon Electric Lime Accent (#d4ff00)
+       - Kinetic Outline Hover Marquee
+       - Pinned Projects Deck with Vertical Step Counter (01 to 08)
+       - Monumental Clipped Footer Wordmark
        ========================================================================== */
 
     :root {
       --bg: #000000;
       --text: #ffffff;
-      --cream: #f4f0e6;
-      --cream-card: #e8e3d5;
-      --dark-card: #0c0d10;
+      --cream: #f6f4ee;
+      --cream-card: #ece8df;
+      --dark-card: #0a0b0d;
       --acid: #d4ff00;          /* Ownitt signature electric lime */
       --acid-glow: rgba(212, 255, 0, 0.35);
       
       --border-dark: rgba(255, 255, 255, 0.12);
       --border-cream: rgba(0, 0, 0, 0.12);
       
-      --font-display: 'Syne', -apple-system, sans-serif;
+      --font-display: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-serif: 'Playfair Display', Georgia, serif;
-      --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
     }
 
@@ -67,35 +67,35 @@
     }
 
     a, button {
-      cursor: none; /* Handled by magnetic cursor */
+      cursor: none;
     }
 
-    /* 1. Custom Smooth Magnetic Cursor */
-    .custom-cursor {
+    /* 1. Custom Magnetic Cursor */
+    .cursor-dot {
       position: fixed;
       top: 0;
       left: 0;
-      width: 14px;
-      height: 14px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
       background: #ffffff;
       pointer-events: none;
-      z-index: 9999;
+      z-index: 10000;
       transform: translate(-50%, -50%);
-      transition: width 0.25s ease, height 0.25s ease, background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
       mix-blend-mode: difference;
+      transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
     }
 
-    .cursor-follower {
+    .cursor-ring {
       position: fixed;
       top: 0;
       left: 0;
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.45);
       pointer-events: none;
-      z-index: 9998;
+      z-index: 9999;
       transform: translate(-50%, -50%);
       display: flex;
       align-items: center;
@@ -103,28 +103,28 @@
       font-family: var(--font-mono);
       font-size: 9px;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: #ffffff;
-      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, background-color 0.2s ease;
       mix-blend-mode: difference;
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease;
     }
 
-    .custom-cursor.active-hover {
-      width: 32px;
-      height: 32px;
+    .cursor-dot.hovered {
+      width: 28px;
+      height: 28px;
       background: var(--acid);
       mix-blend-mode: normal;
     }
 
-    .cursor-follower.show-scroll {
-      width: 74px;
-      height: 74px;
-      background: rgba(255, 255, 255, 0.1);
+    .cursor-ring.mode-scroll {
+      width: 72px;
+      height: 72px;
       border-color: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.08);
     }
 
-    .cursor-follower.show-view {
+    .cursor-ring.mode-view {
       width: 80px;
       height: 80px;
       background: var(--acid);
@@ -133,19 +133,19 @@
       mix-blend-mode: normal;
     }
 
-    /* Fixed Awwwards Badge on Right Edge (ownitt 'W.' badge) */
-    .edge-badge {
+    /* Fixed Awwwards Badge on Right Edge ('W.' badge) */
+    .awwwards-badge {
       position: fixed;
       right: 0;
       top: 50%;
       transform: translateY(-50%);
-      z-index: 100;
+      z-index: 95;
       background: #ffffff;
       color: #000000;
       width: 44px;
-      height: 48px;
-      border-top-left-radius: 24px;
-      border-bottom-left-radius: 24px;
+      height: 52px;
+      border-top-left-radius: 26px;
+      border-bottom-left-radius: 26px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -156,264 +156,214 @@
       transition: width 0.25s ease, background-color 0.2s ease;
       cursor: none;
     }
-    .edge-badge:hover {
+    .awwwards-badge:hover {
       width: 58px;
       background: var(--acid);
     }
 
-    /* 2. Top Header Navigation */
+    /* 2. FULLSCREEN INTRO OVERLAY (Matches 00:00 of video) */
+    .intro-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: #000000;
+      z-index: 900;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.7s;
+    }
+
+    .intro-overlay.dismissed {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(-30px);
+    }
+
+    .intro-logo-box {
+      text-align: center;
+      transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .intro-wordmark {
+      font-family: var(--font-display);
+      font-size: clamp(80px, 17vw, 240px);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 0.85;
+      text-transform: lowercase;
+      color: #ffffff;
+      user-select: none;
+    }
+
+    .intro-subscript {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(14px, 2.2vw, 24px);
+      color: #ffffff;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: inline-block;
+      padding-top: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+      margin-top: 8px;
+    }
+
+    .intro-skip-btn {
+      position: absolute;
+      bottom: 40px;
+      right: 50px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #888888;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s ease;
+      cursor: none;
+    }
+    .intro-skip-btn:hover {
+      color: var(--acid);
+    }
+
+    /* 3. Sticky Top Header */
     .site-header {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      z-index: 90;
-      padding: 24px 40px;
+      z-index: 100;
+      padding: 24px 44px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
     }
 
     .site-header.theme-cream {
-      background: rgba(244, 240, 230, 0.85);
+      background: rgba(246, 244, 238, 0.88);
       border-bottom: 1px solid rgba(0, 0, 0, 0.08);
       color: #000000;
     }
 
-    .nav-brand-title {
+    .header-logo {
       font-family: var(--font-display);
-      font-size: 21px;
+      font-size: 26px;
       font-weight: 800;
-      letter-spacing: -0.03em;
-      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      text-transform: lowercase;
       color: inherit;
+    }
+
+    .btn-header-menu {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.25);
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 6px;
-    }
-
-    .nav-brand-title em {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 14px;
-      color: var(--acid);
-      text-transform: none;
-    }
-    .site-header.theme-cream .nav-brand-title em {
-      color: #000000;
-      background: var(--acid);
-      padding: 0 4px;
-    }
-
-    .nav-controls {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .btn-menu-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 18px;
-      border-radius: 9999px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: inherit;
-      background: rgba(255, 255, 255, 0.04);
+      justify-content: center;
+      gap: 5px;
       transition: all 0.25s ease;
+      background: rgba(255, 255, 255, 0.04);
+      cursor: none;
     }
 
-    .site-header.theme-cream .btn-menu-pill {
+    .site-header.theme-cream .btn-header-menu {
       border-color: rgba(0, 0, 0, 0.2);
       background: rgba(0, 0, 0, 0.04);
     }
 
-    .btn-menu-pill:hover {
+    .btn-header-menu span {
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background: currentColor;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-header-menu:hover {
       border-color: var(--acid);
       background: var(--acid);
       color: #000000;
+      transform: scale(1.06);
     }
 
-    .hamburger-icon {
-      width: 14px;
-      height: 9px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .hamburger-icon span {
-      display: block;
-      width: 100%;
-      height: 1.5px;
-      background: currentColor;
-    }
-
-    /* 3. Hero Section (Ownitt Monumental Typography & Visual) */
-    .hero-stage {
+    /* 4. HERO SECTION (AsteriskHero) */
+    .hero-section {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 140px 40px 50px;
+      padding: 140px 44px 50px;
       position: relative;
     }
 
-    .hero-top-announcement {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-muted);
-      margin-bottom: 30px;
-    }
-
-    .hero-main-grid {
+    .hero-grid {
       display: grid;
-      grid-template-columns: 1.4fr 1fr;
+      grid-template-columns: 1.35fr 1fr;
       align-items: center;
       gap: 40px;
       margin: auto 0;
     }
 
-    .hero-headline-box h1 {
+    .hero-headline {
       font-family: var(--font-display);
       font-size: clamp(34px, 5.2vw, 76px);
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.03em;
       line-height: 1.05;
       color: #ffffff;
       margin-bottom: 24px;
     }
 
-    .hero-headline-box h1 .serif-italic {
+    .hero-headline .serif-italic {
       font-family: var(--font-serif);
       font-style: italic;
       font-weight: 400;
       text-transform: none;
       letter-spacing: normal;
-      color: var(--acid);
-    }
-
-    .hero-deck {
-      font-size: clamp(15px, 1.3vw, 19px);
-      line-height: 1.6;
-      color: #aaaaaa;
-      max-width: 620px;
-      margin-bottom: 36px;
-    }
-
-    .hero-deck strong {
       color: #ffffff;
     }
 
-    .hero-cta-row {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .btn-pill-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: #ffffff;
-      color: #000000;
-      font-family: var(--font-display);
-      font-size: 13.5px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 14px 30px;
-      border-radius: 9999px;
-      transition: all 0.25s ease;
-      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
-    }
-
-    .btn-pill-primary:hover {
-      background: var(--acid);
-      transform: scale(1.03);
-      box-shadow: 0 15px 35px var(--acid-glow);
-    }
-
-    .btn-pill-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      border: 1px solid var(--border-dark);
-      color: #ffffff;
-      font-family: var(--font-mono);
-      font-size: 12.5px;
-      padding: 13px 24px;
-      border-radius: 9999px;
-      transition: all 0.25s ease;
-    }
-
-    .btn-pill-secondary:hover {
-      border-color: #ffffff;
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    /* Hero Dramatic Visual (Right Column, Chess / High Contrast Style) */
-    .hero-visual-frame {
-      position: relative;
+    .hero-photo-wrap {
       width: 100%;
-      height: 480px;
-      border-radius: 18px;
+      height: 520px;
+      border-radius: 20px;
       overflow: hidden;
-      border: 1px solid var(--border-dark);
       background: #090a0f;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border: 1px solid var(--border-dark);
+      position: relative;
       box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
     }
 
-    .visual-sculpture {
+    .hero-photo-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: grayscale(100%) contrast(125%) brightness(90%);
+      filter: grayscale(100%) contrast(125%) brightness(95%);
       transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
     }
 
-    .hero-visual-frame:hover .visual-sculpture {
-      transform: scale(1.05);
-      filter: grayscale(80%) contrast(130%) brightness(100%);
+    .hero-photo-wrap:hover .hero-photo-img {
+      transform: scale(1.04);
+      filter: grayscale(70%) contrast(130%) brightness(100%);
     }
 
-    .visual-overlay-tag {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      padding: 6px 14px;
-      border-radius: 9999px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: #ffffff;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .hero-bottom-ticker {
+    .hero-bottom-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -421,34 +371,66 @@
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       font-family: var(--font-mono);
       font-size: 12px;
-      color: var(--text-muted);
+      color: #888888;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       flex-wrap: wrap;
       gap: 16px;
     }
 
-    .pulse-dot {
-      display: inline-block;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--acid);
-      box-shadow: 0 0 10px var(--acid);
-      margin-right: 6px;
-      animation: pulseAnim 2s infinite;
+    /* 5. LOCAL ANCHOR SECTION */
+    .local-anchor-section {
+      padding: 100px 44px;
+      border-top: 1px solid var(--border-dark);
     }
 
-    @keyframes pulseAnim {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.8); }
+    .anchor-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 50px;
     }
 
-    /* 4. THEME FLIP SECTION: WARM CREAM MANIFESTO (#f4f0e6) */
+    .anchor-kicker {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: #666666;
+    }
+
+    .anchor-text {
+      font-family: var(--font-serif);
+      font-size: clamp(24px, 3.2vw, 42px);
+      line-height: 1.35;
+      color: #ffffff;
+    }
+
+    .anchor-text em {
+      font-style: italic;
+      color: var(--acid);
+    }
+
+    .anchor-subline {
+      margin-top: 32px;
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2.2vw, 28px);
+      font-weight: 800;
+      color: #ffffff;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .anchor-subline em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--acid);
+    }
+
+    /* 6. SHOWREEL SECTION (WARM IVORY CREAM THEME FLIP #f6f4ee) */
     .section-cream {
-      background-color: var(--cream);
+      background: var(--cream);
       color: #000000;
-      padding: 130px 40px;
+      padding: 140px 44px;
       position: relative;
       transition: background-color 0.4s ease;
     }
@@ -458,19 +440,9 @@
       margin: 0 auto;
     }
 
-    .cream-tag {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: #777777;
-      margin-bottom: 24px;
-    }
-
     .cream-huge-title {
       font-family: var(--font-display);
-      font-size: clamp(40px, 7vw, 96px);
+      font-size: clamp(44px, 7.5vw, 104px);
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: -0.04em;
@@ -486,25 +458,23 @@
       text-transform: none;
     }
 
-    /* Center floating black card with spinning flower */
-    .cream-interactive-card {
+    /* Center black interactive showreel card with spinning flower */
+    .cream-video-card {
       background: #000000;
       color: #ffffff;
       border-radius: 24px;
-      padding: 60px 48px;
+      padding: 70px 50px;
       display: grid;
       grid-template-columns: 1.5fr 1fr;
       align-items: center;
       gap: 40px;
       box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
-      position: relative;
-      overflow: hidden;
     }
 
     .cream-card-text {
       font-family: var(--font-serif);
-      font-size: clamp(22px, 2.8vw, 38px);
-      line-height: 1.35;
+      font-size: clamp(24px, 3vw, 42px);
+      line-height: 1.3;
       color: #ffffff;
     }
 
@@ -521,7 +491,7 @@
       text-align: center;
     }
 
-    /* Rotating 12-arm Asterisk / Flower Icon */
+    /* Rotating 12-Arm Sunburst Asterisk */
     .spinning-asterisk {
       width: 110px;
       height: 110px;
@@ -535,74 +505,122 @@
       to { transform: rotate(360deg); }
     }
 
-    .cream-sub-definition {
-      margin-top: 60px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      font-size: 16px;
-      line-height: 1.7;
-      color: #333333;
-    }
-
-    .cream-sub-definition strong {
-      color: #000000;
-    }
-
-    /* 5. BLACK MANIFESTO QUOTES (The ownitt green punchlines) */
-    .section-punchlines {
+    /* 7. MANIFESTO QUOTES (The Green Punchlines on Deep Black) */
+    .section-manifesto {
       background: #000000;
-      color: #ffffff;
-      padding: 140px 40px;
+      padding: 150px 44px;
       border-top: 1px solid var(--border-dark);
       border-bottom: 1px solid var(--border-dark);
     }
 
-    .punchline-wrapper {
+    .manifesto-inner {
       max-width: 1100px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 80px;
+      gap: 90px;
     }
 
-    .punchline-block {
-      border-left: 2px solid rgba(255, 255, 255, 0.15);
-      padding-left: 36px;
+    .manifesto-block {
+      border-left: 2px solid rgba(255, 255, 255, 0.2);
+      padding-left: 40px;
       transition: border-color 0.3s ease;
     }
 
-    .punchline-block:hover {
+    .manifesto-block:hover {
       border-color: var(--acid);
     }
 
-    .punchline-top-sans {
+    .manifesto-sans {
       font-family: var(--font-display);
-      font-size: clamp(28px, 4.4vw, 58px);
+      font-size: clamp(28px, 4.4vw, 60px);
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: -0.03em;
       line-height: 1.1;
       color: #ffffff;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
-    .punchline-bottom-serif {
+    .manifesto-serif-green {
       font-family: var(--font-serif);
-      font-size: clamp(26px, 4vw, 54px);
+      font-size: clamp(26px, 4.2vw, 56px);
       font-style: italic;
       color: var(--acid);
       line-height: 1.15;
     }
 
-    /* 6. PINNED WORK SHOWCASE (The Horizontal / Paged Slider Cards) */
-    .section-showcase {
-      background: #000000;
-      padding: 120px 40px 160px;
-      position: relative;
+    /* 8. DEFINITION & QUESTION SCENE */
+    .section-definition {
+      background: var(--cream);
+      color: #000000;
+      padding: 120px 44px;
     }
 
-    .showcase-top-bar {
+    .definition-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .def-kicker {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #777777;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+
+    .def-word {
+      font-family: var(--font-display);
+      font-size: clamp(50px, 9vw, 120px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: #000000;
+      line-height: 0.9;
+      margin-bottom: 12px;
+    }
+
+    .def-phonetic {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      color: #555555;
+      margin-bottom: 30px;
+    }
+
+    .def-body {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #222222;
+      max-width: 720px;
+    }
+
+    .section-question {
+      background: #000000;
+      padding: 120px 44px;
+      text-align: center;
+      border-top: 1px solid var(--border-dark);
+      border-bottom: 1px solid var(--border-dark);
+    }
+
+    .question-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(34px, 5.5vw, 76px);
+      color: #ffffff;
+    }
+
+    .question-headline span {
+      color: var(--acid);
+    }
+
+    /* 9. PINNED PROJECTS SHOWCASE DECK (01 to 08) */
+    .section-projects {
+      background: #000000;
+      padding: 120px 44px 160px;
+    }
+
+    .projects-header-bar {
       max-width: 1200px;
       margin: 0 auto 60px;
       display: flex;
@@ -614,25 +632,17 @@
       gap: 20px;
     }
 
-    .showcase-title-box h2 {
+    .projects-title {
       font-family: var(--font-display);
-      font-size: clamp(36px, 5.5vw, 72px);
+      font-size: clamp(38px, 5.6vw, 74px);
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: -0.04em;
+      color: #ffffff;
       line-height: 1;
     }
 
-    .showcase-title-box h2 span {
-      font-family: var(--font-serif);
-      font-style: italic;
-      color: var(--acid);
-      font-size: 0.6em;
-      margin-left: 12px;
-    }
-
-    /* Pinned Deck Layout */
-    .pinned-deck-container {
+    .pinned-projects-layout {
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
@@ -640,34 +650,34 @@
       gap: 40px;
     }
 
-    .cards-deck-stack {
+    .cards-deck-column {
       display: flex;
       flex-direction: column;
-      gap: 40px;
+      gap: 44px;
     }
 
-    /* Large Project Card (Ownitt Burger King / Tabam style) */
-    .project-card {
+    /* The Project Card */
+    .proj-card {
       background: var(--dark-card);
       border: 1px solid var(--border-dark);
-      border-radius: 20px;
+      border-radius: 22px;
       padding: 44px;
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
+      grid-template-columns: 1.25fr 1fr;
       align-items: center;
       gap: 40px;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
       overflow: hidden;
     }
 
-    .project-card:hover {
-      border-color: var(--border-hover);
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+    .proj-card:hover {
+      border-color: rgba(255, 255, 255, 0.35);
       transform: translateY(-4px);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85);
     }
 
-    .project-card::before {
+    .proj-card::before {
       content: '';
       position: absolute;
       top: 0;
@@ -675,50 +685,21 @@
       right: 0;
       height: 3px;
       background: linear-gradient(90deg, var(--card-accent, var(--acid)), transparent);
-      opacity: 0.8;
     }
 
-    .project-left-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 100%;
-    }
-
-    .project-meta-pills {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-
-    .pill-kicker {
+    .proj-kicker {
       font-family: var(--font-mono);
       font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       color: var(--acid);
-      background: rgba(212, 255, 0, 0.08);
-      border: 1px solid rgba(212, 255, 0, 0.25);
-      padding: 3px 10px;
-      border-radius: 9999px;
+      margin-bottom: 16px;
     }
 
-    .pill-subdomain {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: #888888;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border-dark);
-      padding: 3px 10px;
-      border-radius: 9999px;
-    }
-
-    .project-title {
+    .proj-name {
       font-family: var(--font-display);
-      font-size: clamp(28px, 3.4vw, 44px);
+      font-size: clamp(28px, 3.6vw, 46px);
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: -0.03em;
@@ -727,21 +708,14 @@
       margin-bottom: 16px;
     }
 
-    .project-desc {
+    .proj-desc {
       font-size: 15px;
       line-height: 1.6;
       color: #a0a0a0;
-      margin-bottom: 30px;
+      margin-bottom: 28px;
     }
 
-    .project-actions {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .btn-launch-tool {
+    .btn-proj-link {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -751,157 +725,113 @@
       font-size: 13px;
       font-weight: 800;
       text-transform: uppercase;
-      padding: 10px 22px;
+      letter-spacing: 0.05em;
+      padding: 10px 24px;
       border-radius: 9999px;
       transition: all 0.25s ease;
+      cursor: none;
     }
 
-    .btn-launch-tool:hover {
+    .btn-proj-link:hover {
       background: var(--acid);
-      transform: scale(1.03);
+      transform: scale(1.04);
     }
 
-    .btn-git-target {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: #888888;
-      padding: 9px 16px;
-      border: 1px solid var(--border-dark);
-      border-radius: 9999px;
-      transition: all 0.25s ease;
-    }
-
-    .btn-git-target:hover {
-      color: #ffffff;
-      border-color: #ffffff;
-    }
-
-    /* Right visual box inside project card */
-    .project-right-visual {
-      height: 280px;
+    .proj-photo-frame {
+      width: 100%;
+      height: 300px;
       border-radius: 14px;
+      overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.08);
       background: #000000;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      font-family: var(--font-mono);
-      font-size: 12.5px;
-      position: relative;
-      overflow: hidden;
     }
 
-    .visual-top-bar {
-      display: flex;
-      justify-content: space-between;
-      color: #555555;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      padding-bottom: 12px;
+    .proj-photo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .visual-metric-big {
-      font-size: 28px;
-      font-weight: 700;
-      color: #ffffff;
-      margin: 12px 0 4px;
+    .proj-card:hover .proj-photo-img {
+      transform: scale(1.05);
     }
 
-    .visual-tags {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
-    .visual-tag {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 10.5px;
-      color: #888888;
-    }
-
-    /* Vertical Number Timeline on the Right */
-    .vertical-timeline {
+    /* Right Sticky Timeline Indicator */
+    .sticky-timeline {
       position: sticky;
       top: 140px;
       height: fit-content;
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 20px;
       font-family: var(--font-mono);
       font-size: 14px;
       color: #333333;
     }
 
-    .timeline-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: color 0.2s ease;
-    }
-
-    .timeline-item.active {
+    .time-node.active {
       color: var(--acid);
       font-weight: 700;
     }
-
-    .timeline-item.active::before {
-      content: '—';
+    .time-node.active::before {
+      content: '— ';
       color: var(--acid);
     }
 
-    /* 7. KINETIC TEXT HOVER MARQUEE (The 4 Invariants) */
-    .section-kinetic {
+    /* 10. KINETIC HOVER SERVICES MARQUEE */
+    .section-services {
       background: #000000;
       padding: 100px 0 140px;
       border-top: 1px solid var(--border-dark);
     }
 
-    .kinetic-header {
+    .services-top-text {
       max-width: 1200px;
-      margin: 0 auto 40px;
-      padding: 0 40px;
+      margin: 0 auto 30px;
+      padding: 0 44px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #777777;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
 
-    .kinetic-list {
+    .services-stack {
       display: flex;
       flex-direction: column;
       border-top: 1px solid var(--border-dark);
     }
 
-    .kinetic-row {
-      padding: 32px 40px;
+    .service-row {
+      padding: 34px 44px;
       border-bottom: 1px solid var(--border-dark);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.25s ease;
       cursor: none;
-      position: relative;
-      overflow: hidden;
     }
 
-    .kinetic-row:hover {
-      background-color: #080808;
+    .service-row:hover {
+      background: #080808;
     }
 
-    .kinetic-title-box {
+    .service-left {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 28px;
     }
 
-    .kinetic-num {
+    .service-num {
       font-family: var(--font-mono);
       font-size: 15px;
       color: #444444;
     }
 
-    .kinetic-text {
+    .service-name {
       font-family: var(--font-display);
-      font-size: clamp(26px, 3.8vw, 54px);
+      font-size: clamp(26px, 4vw, 56px);
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: -0.02em;
@@ -909,145 +839,143 @@
       transition: color 0.25s ease;
     }
 
-    .kinetic-row:hover .kinetic-text {
+    .service-row:hover .service-name {
       color: var(--acid);
     }
 
-    .kinetic-desc-sub {
+    .service-details {
       font-family: var(--font-serif);
       font-style: italic;
       font-size: 18px;
       color: #777777;
     }
 
-    /* 8. LIVE TELEMETRY CONSOLE */
-    .section-console {
-      padding: 80px 40px 120px;
-      background: #000000;
-    }
-
-    .console-box {
-      max-width: 1100px;
-      margin: 0 auto;
-      background: #050608;
-      border: 1px solid var(--border-dark);
-      border-radius: 16px;
-      padding: 36px;
-      font-family: var(--font-mono);
-      font-size: 12.5px;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
-    }
-
-    .console-header {
-      display: flex;
-      justify-content: space-between;
-      padding-bottom: 18px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      margin-bottom: 24px;
-      font-size: 11px;
-      color: #666666;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .console-logs {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      line-height: 1.8;
-    }
-
-    .c-line {
-      display: flex;
-      gap: 16px;
-    }
-    .c-num { color: #444444; }
-    .c-highlight { color: var(--acid); }
-    .c-ok { color: #10b981; }
-
-    /* 9. BOTTOM MASSIVE FOOTER WITH SPINNING SUNBURST & GIANT WORDMARK */
-    .section-bottom {
+    /* 11. CLIENT LOGOS & TESTIMONIAL (CREAM THEME) */
+    .section-clients {
       background: var(--cream);
       color: #000000;
-      padding: 120px 40px 0;
-      position: relative;
+      padding: 120px 44px;
+    }
+
+    .clients-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .clients-kicker {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #777777;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 40px;
+    }
+
+    .clients-names-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 4.5vw, 56px);
+      line-height: 1.2;
+      color: #000000;
+      margin-bottom: 50px;
+    }
+
+    .client-highlight-pill {
+      display: inline-block;
+      background: var(--acid);
+      color: #000000;
+      padding: 6px 18px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    /* 12. BOTTOM FOOTER WITH GIANT WORDMARK */
+    .section-footer {
+      background: var(--cream);
+      color: #000000;
+      padding: 100px 44px 0;
+      border-top: 1px solid var(--border-cream);
       overflow: hidden;
     }
 
-    .bottom-cta-inner {
+    .footer-top-grid {
       max-width: 1200px;
-      margin: 0 auto;
+      margin: 0 auto 80px;
       display: grid;
       grid-template-columns: 2fr 1fr;
       align-items: center;
       gap: 60px;
-      margin-bottom: 100px;
     }
 
-    .bottom-headline {
+    .footer-heading {
       font-family: var(--font-display);
-      font-size: clamp(38px, 6vw, 84px);
+      font-size: clamp(36px, 5.5vw, 76px);
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: -0.04em;
       line-height: 1;
-      color: #000000;
       margin-bottom: 20px;
     }
 
-    .bottom-headline em {
-      font-family: var(--font-serif);
-      font-style: italic;
-      text-transform: none;
+    .footer-newsletter-wrap {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+      max-width: 480px;
     }
 
-    .bottom-sub {
-      font-size: 16px;
-      color: #555555;
-      margin-bottom: 36px;
-      max-width: 580px;
+    .footer-input {
+      flex: 1;
+      padding: 14px 20px;
+      border-radius: 9999px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      background: #ffffff;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      outline: none;
     }
 
-    .btn-massive-black {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
+    .btn-footer-sub {
+      padding: 14px 28px;
+      border-radius: 9999px;
       background: #000000;
       color: #ffffff;
       font-family: var(--font-display);
-      font-size: 15px;
+      font-size: 13px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      padding: 18px 40px;
-      border-radius: 9999px;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+      transition: all 0.25s ease;
+      cursor: none;
     }
-
-    .btn-massive-black:hover {
+    .btn-footer-sub:hover {
       background: var(--acid);
       color: #000000;
-      transform: scale(1.03);
     }
 
-    /* Right side corner info with spinning asterisk */
-    .bottom-right-station {
+    .footer-right-col {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
       text-align: right;
     }
 
-    .spin-star-green {
+    .footer-spinning-star {
       width: 90px;
       height: 90px;
       color: #000000;
       animation: spinAsterisk 14s linear infinite;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
-    .bottom-contact-links {
+    .footer-social-links {
       font-family: var(--font-mono);
       font-size: 12px;
       display: flex;
@@ -1055,16 +983,16 @@
       gap: 8px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: #333333;
     }
 
-    .bottom-contact-links a:hover {
-      color: #000000;
-      font-weight: 700;
+    .footer-social-links a:hover {
+      color: var(--acid);
+      background: #000000;
+      padding: 0 4px;
     }
 
-    /* GIANT MONUMENTAL WORDMARK CLIPPED AT BOTTOM */
-    .giant-monument-footer {
+    /* Giant Monolithic Wordmark clipped at viewport bottom */
+    .giant-footer-wordmark {
       font-family: var(--font-display);
       font-size: clamp(80px, 20vw, 320px);
       font-weight: 800;
@@ -1081,540 +1009,484 @@
 
     /* Responsive */
     @media (max-width: 1024px) {
-      .hero-main-grid { grid-template-columns: 1fr; }
-      .hero-visual-frame { height: 380px; }
-      .pinned-deck-container { grid-template-columns: 1fr; }
-      .vertical-timeline { display: none; }
-      .project-card { grid-template-columns: 1fr; }
-      .cream-interactive-card { grid-template-columns: 1fr; }
-      .bottom-cta-inner { grid-template-columns: 1fr; }
-      .bottom-right-station { align-items: flex-start; text-align: left; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-photo-wrap { height: 380px; }
+      .pinned-projects-layout { grid-template-columns: 1fr; }
+      .sticky-timeline { display: none; }
+      .proj-card { grid-template-columns: 1fr; }
+      .cream-video-card { grid-template-columns: 1fr; }
+      .footer-top-grid { grid-template-columns: 1fr; }
+      .footer-right-col { align-items: flex-start; text-align: left; }
     }
 
     @media (max-width: 768px) {
       body { cursor: auto; }
-      .custom-cursor, .cursor-follower { display: none; }
+      .cursor-dot, .cursor-ring { display: none; }
       .site-header { padding: 18px 24px; }
-      .hero-stage { padding: 120px 24px 40px; }
-      .section-cream { padding: 80px 24px; }
-      .section-punchlines { padding: 80px 24px; }
-      .section-showcase { padding: 80px 24px; }
-      .kinetic-row { padding: 24px; flex-direction: column; align-items: flex-start; gap: 8px; }
-      .section-bottom { padding: 80px 24px 0; }
+      .hero-section { padding: 110px 24px 40px; }
+      .service-row { padding: 24px 20px; flex-direction: column; align-items: flex-start; gap: 8px; }
+      .section-footer { padding: 80px 24px 0; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Custom Magnetic Cursor Follower -->
-  <div class="custom-cursor" id="cursor-dot"></div>
-  <div class="cursor-follower" id="cursor-follower"></div>
+  <!-- 1. Custom Smooth Magnetic Cursor -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
 
-  <!-- Awwwards Style Floating Right Edge Badge -->
-  <a href="#showcase" class="edge-badge" title="Shipped Utilities">
-    <span>04</span>
+  <!-- Awwwards Style Floating 'W.' Badge on Right Screen Edge -->
+  <a href="#projets" class="awwwards-badge" title="Awwwards Site of the Day">
+    <span>W.</span>
   </a>
 
-  <!-- Top Header Navigation -->
+  <!-- 2. FULLSCREEN INTRO OVERLAY (Matches 00:00 - 00:01 of the Video) -->
+  <div class="intro-overlay" id="intro-overlay">
+    <div class="intro-logo-box">
+      <div class="intro-wordmark">ownitt</div>
+      <div class="intro-subscript">AGENCE CRÉATIVE</div>
+    </div>
+    <button class="intro-skip-btn" id="intro-skip">
+      <span>PASSER</span>
+      <span>→</span>
+    </button>
+  </div>
+
+  <!-- 3. Top Sticky Header -->
   <header class="site-header" id="site-header">
-    <a href="/" class="nav-brand-title">
-      CLUBME <em>Foundry</em>
+    <a href="/" class="header-logo" id="header-logo">
+      ownitt
     </a>
 
-    <div class="nav-controls">
-      <a href="https://t.me/my_dailysaas_alert_bot" target="_blank" class="btn-menu-pill">
-        <span class="pulse-dot"></span>
-        <span>Telegram Desk</span>
-      </a>
-      <a href="https://github.com/dev998889" target="_blank" class="btn-menu-pill">
-        <span>GitHub (dev998889)</span>
-      </a>
-    </div>
+    <button class="btn-header-menu" aria-label="Menu">
+      <span></span>
+      <span></span>
+    </button>
   </header>
 
-  <!-- 1. Hero Stage -->
-  <section class="hero-stage">
-    
-    <div class="hero-top-announcement">
-      <div>[ Autonomous Venture Studio ]</div>
-      <div>IST ACTIVE • 09:00 — 02:00</div>
-    </div>
+  <!-- 4. Hero Section (AsteriskHero - Matches 00:02 - 00:05 of Video) -->
+  <section class="hero-section" id="hero-section">
+    <div></div>
 
-    <div class="hero-main-grid">
-      
-      <!-- Left Column: Manifesto Headline -->
-      <div class="hero-headline-box">
-        <h1>
-          We engineer micro-utilities that ship before the day <span class="serif-italic">ends.</span>
-        </h1>
-
-        <p class="hero-deck">
-          An autonomous software engine scouting operational friction across <strong>India 🇮🇳</strong> and the <strong>Global 🌍</strong> ecosystem. Zero recurring server costs. Verified edge deployments. <strong>100% free forever.</strong>
-        </p>
-
-        <div class="hero-cta-row">
-          <a href="#showcase" class="btn-pill-primary">
-            <span>Explore Shipped Tools</span>
-            <span>↓</span>
-          </a>
-          <a href="https://t.me/my_dailysaas_alert_bot" target="_blank" class="btn-pill-secondary">
-            <span>Join @my_dailysaas_alert_bot ↗</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Right Column: Sculptural High-Contrast Art -->
-      <div class="hero-visual-frame" data-hover-state="VIEW">
-        <img 
-          src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1000&auto=format&fit=crop" 
-          alt="Architectural Sculpture" 
-          class="visual-sculpture" 
-        />
-        <div class="visual-overlay-tag">
-          Autonomous Node • Active
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Bottom Ticker -->
-    <div class="hero-bottom-ticker">
+    <div class="hero-grid">
       <div>
-        <span class="pulse-dot"></span>
-        <span>Engine Daemon Armed</span>
+        <h1 class="hero-headline">
+          NOUS CRÉONS DES MARQUES QUI PARLENT AVANT QUE VOUS N'OUVRIEZ <span class="serif-italic">la bouche.</span>
+        </h1>
       </div>
-      <div>1 Production Micro-Tool / 24 Hours</div>
-      <div>Zero Recurring Server Fees</div>
-      <div style="color: var(--acid);">Direct *.clubme.in Routing</div>
+
+      <div class="hero-photo-wrap" data-cursor="VIEW">
+        <img 
+          src="https://res.cloudinary.com/dvzsvgucq/image/upload/f_auto,q_auto,w_1600/v1780692135/hero-website-ownitt_ybitlu.webp" 
+          alt="Direction Artistique Ownitt" 
+          class="hero-photo-img" 
+        />
+      </div>
     </div>
 
+    <div class="hero-bottom-bar">
+      <div>AGENCE ARCH • MARKETING • BRANDING • DIGITALE</div>
+      <div style="color: var(--acid);">PAYS BASQUE • PARIS</div>
+    </div>
   </section>
 
-  <!-- 2. Warm Ivory Cream Manifesto Section (Theme Flip) -->
+  <!-- 5. Local Anchor Section (Matches 00:06 of Video) -->
+  <section class="local-anchor-section">
+    <div class="anchor-grid">
+      <div class="anchor-kicker">
+        (CRÉATION DE SITE INTERNET)
+      </div>
+
+      <div>
+        <p class="anchor-text">
+          Agence web, agence de communication, studio de branding : appelez-nous comme vous voudrez. L'adresse est au Pays Basque, les clients sont à Bayonne comme à Paris, et parfois bien plus loin. Pour la création d'un site internet comme pour une marque, la distance n'a jamais été le problème. <em>Le flou, si.</em>
+        </p>
+
+        <div class="anchor-subline">
+          <span>AGENCE WEB AU PAYS BASQUE.</span>
+          <em>L'adresse, pas la limite.</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Showreel Section with Theme Flip to Ivory Cream (Matches 00:07 - 00:09) -->
   <section class="section-cream" id="cream-section">
     <div class="cream-inner">
-      
-      <div class="cream-tag">[ Le Manifeste 2026 ]</div>
-
       <h2 class="cream-huge-title">
-        We are <em>ClubMe.</em>
+        WE ARE <em>Ownitt.</em>
       </h2>
 
-      <!-- Floating Black Box with Spinning Sunburst Flower -->
-      <div class="cream-interactive-card">
+      <!-- Black Interactive Showreel Card with 12-Arm Spinning Asterisk -->
+      <div class="cream-video-card" data-cursor="VIEW">
         <div>
           <p class="cream-card-text">
-            Most software agencies spend months creating slide decks. Our autonomous pipeline scouts, builds, and deploys production tools <em>overnight.</em>
+            On passe trop de temps à essayer de se démarquer. À chercher ce détail qui nous rendrait spécial. <em>Mais le combat se joue ailleurs.</em>
           </p>
         </div>
 
         <div class="cream-card-visual">
-          <!-- 12-Arm Sunburst Asterisk SVG -->
           <svg class="spinning-asterisk" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M50 0V100M0 50H100M14.64 14.64L85.36 85.36M14.64 85.36L85.36 14.64M5.8 25L94.2 75M5.8 75L94.2 25M25 5.8L75 94.2M25 94.2L75 5.8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
           </svg>
           <span style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--acid);">
-            ROTATING 24H DAEMON
+            SHOWREEL • SON / PLEIN ÉCRAN
           </span>
         </div>
       </div>
-
-      <div class="cream-sub-definition">
-        <div>
-          <strong>The Non-Negotiable Boundary:</strong>
-          <p style="margin-top: 8px;">
-            Every single utility must run purely client-side or on free edge serverless compute. No persistent AWS databases, no credit card burn, no maintenance debt.
-          </p>
-        </div>
-        <div>
-          <strong>Strict Repository Isolation:</strong>
-          <p style="margin-top: 8px;">
-            All automated micro-SaaS repositories are versioned and pushed strictly to <strong style="text-decoration: underline;">github.com/dev998889</strong>. Clean, isolated, and crash-resilient.
-          </p>
-        </div>
-      </div>
-
     </div>
   </section>
 
-  <!-- 3. Black High-Impact Punchlines Section -->
-  <section class="section-punchlines">
-    <div class="punchline-wrapper">
+  <!-- 7. Manifesto Section with Green Italic Punchlines (Matches 00:10 - 00:16) -->
+  <section class="section-manifesto">
+    <div class="manifesto-inner">
       
-      <div class="punchline-block">
-        <div class="punchline-top-sans">
-          The Real Battle Is Shipping.
-        </div>
-        <div class="punchline-bottom-serif">
-          One production-grade micro-tool every single day.
-        </div>
+      <div class="manifesto-block">
+        <div class="manifesto-sans">ON PASSE TROP DE TEMPS À ESSAYER DE SE DÉMARQUER.</div>
+        <div class="manifesto-serif-green">Mais le combat se joue ailleurs.</div>
       </div>
 
-      <div class="punchline-block">
-        <div class="punchline-top-sans">
-          Zero Recurring Server Charges.
-        </div>
-        <div class="punchline-bottom-serif">
-          Zero bloat. Zero cloud fees. Zero compromise.
-        </div>
+      <div class="manifesto-block">
+        <div class="manifesto-sans">IL SE JOUE DANS LA CAPACITÉ À ASSUMER.</div>
+        <div class="manifesto-serif-green">Assumer de déplaire pour mieux séduire.</div>
       </div>
 
-      <div class="punchline-block">
-        <div class="punchline-top-sans">
-          Your Daily Friction Solved.
-        </div>
-        <div class="punchline-bottom-serif">
-          Deployed cleanly on dedicated *.clubme.in subdomains.
-        </div>
+      <div class="manifesto-block">
+        <div class="manifesto-sans">VOTRE MARQUE N'ATTEND PAS JUSTE QUE VOUS SOYEZ ORIGINAL.</div>
+        <div class="manifesto-serif-green">Elle attend que vous en preniez pleinement possession.</div>
       </div>
 
     </div>
   </section>
 
-  <!-- 4. Pinned Work Showcase Section -->
-  <section class="section-showcase" id="showcase">
-    
-    <div class="showcase-top-bar">
-      <div class="showcase-title-box">
-        <div style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase;">
-          [ Verified Production Registry ]
-        </div>
-        <h2>
-          Shipped Utilities <span>(04)</span>
-        </h2>
+  <!-- 8. Definition & Question (Matches 00:17 - 00:19) -->
+  <section class="section-definition">
+    <div class="definition-inner">
+      <div class="def-kicker">[ DÉFINITION ]</div>
+      <h3 class="def-word">Ownitt</h3>
+      <div class="def-phonetic">\ ow·nit \ verbe transitif</div>
+      <p class="def-body">
+        1. L'art d'assumer radicalement sa singularité, et la faire rayonner avec panache. <br>
+        <em>syn. oser · revendiquer · posséder.</em>
+      </p>
+    </div>
+  </section>
+
+  <section class="section-question">
+    <h2 class="question-headline">
+      Mais qu'est-ce qu'on fait, exactement <span>?</span>
+    </h2>
+  </section>
+
+  <!-- 9. Pinned Projects Deck (Matches 00:20 - 00:29) -->
+  <section class="section-projects" id="projets">
+    <div class="projects-header-bar">
+      <div>
+        <div style="font-family: var(--font-mono); font-size: 12px; color: #888888; margin-bottom: 8px;">[ LA PROMESSE ]</div>
+        <h2 class="projects-title">LES PROJETS</h2>
       </div>
 
       <div style="font-family: var(--font-mono); font-size: 12px; color: var(--acid);">
-        ● 100% OPERATIONAL & VERIFIED
+        DEVENEZ L'ÉVIDENCE, PAS L'OPTION.
       </div>
     </div>
 
-    <!-- Pinned Deck -->
-    <div class="pinned-deck-container">
+    <div class="pinned-projects-layout">
       
-      <div class="cards-deck-stack">
+      <div class="cards-deck-column">
         
-        <!-- CARD 01: InvoiceCraft GST -->
-        <article class="project-card" style="--card-accent: #f59e0b;" data-hover-state="VIEW">
-          <div class="project-left-content">
-            <div>
-              <div class="project-meta-pills">
-                <span class="pill-kicker">01 • India SMB 🇮🇳</span>
-                <span class="pill-subdomain">invoice.clubme.in ↗</span>
-              </div>
-              <h3 class="project-title">InvoiceCraft GST</h3>
-              <p class="project-desc">
-                Instant GST-compliant B2B & B2C invoice engine. Generates professional printable PDFs with automated HSN/SAC codes, multi-slab tax breakdown, and embeds dynamic UPI payment QR codes for zero-fee payouts.
-              </p>
-            </div>
-
-            <div class="project-actions">
-              <a href="https://invoice.clubme.in" target="_blank" class="btn-launch-tool">
-                <span>Launch Utility</span>
-                <span>↗</span>
-              </a>
-              <a href="https://github.com/dev998889" target="_blank" class="btn-git-target">
-                <span>dev998889/invoice-craft ↗</span>
-              </a>
-            </div>
+        <!-- 01 / Burger King -->
+        <article class="proj-card" style="--card-accent: #ef4444;" data-cursor="VOIR">
+          <div>
+            <div class="proj-kicker">01 / CAS CLIENT • DIRECTION ARTISTIQUE</div>
+            <h3 class="proj-name">Burger King</h3>
+            <p class="proj-desc">
+              Et si votre visage suffisait à commander ? La première application Burger King qui vous reconnaît.
+            </p>
+            <a href="https://ownitt.fr/projets/burger-king" target="_blank" class="btn-proj-link">
+              <span>VOIR LE PROJET</span>
+              <span>→</span>
+            </a>
           </div>
 
-          <div class="project-right-visual">
-            <div class="visual-top-bar">
-              <span>INVOICE_ENGINE_PREVIEW</span>
-              <span style="color: var(--acid);">FY 2026-27</span>
-            </div>
-            <div>
-              <div style="color: #666666; font-size: 11px;">TAX BREAKDOWN</div>
-              <div class="visual-metric-big">₹ 18,450.00</div>
-              <div style="color: var(--acid); font-size: 11.5px;">CGST (9%) + SGST (9%) INCLUDED</div>
-            </div>
-            <div class="visual-tags">
-              <span class="visual-tag">UPI QR Embedded</span>
-              <span class="visual-tag">Offline-First</span>
-              <span class="visual-tag">Zero Log</span>
-            </div>
+          <div class="proj-photo-frame">
+            <img 
+              src="https://res.cloudinary.com/dvzsvgucq/image/upload/f_auto,q_auto,w_1200/v1782846189/bking_y7p732.webp" 
+              alt="Burger King" 
+              class="proj-photo-img" 
+            />
           </div>
         </article>
 
-        <!-- CARD 02: EdgeShort -->
-        <article class="project-card" style="--card-accent: #06b6d4;" data-hover-state="VIEW">
-          <div class="project-left-content">
-            <div>
-              <div class="project-meta-pills">
-                <span class="pill-kicker" style="color: #22d3ee; border-color: rgba(6,182,212,0.3); background: rgba(6,182,212,0.08);">02 • Global Edge 🌍</span>
-                <span class="pill-subdomain">snap.clubme.in ↗</span>
-              </div>
-              <h3 class="project-title">EdgeShort & QR</h3>
-              <p class="project-desc">
-                Sub-millisecond link redirection and vector QR architect. Built on distributed Cloudflare edge workers with zero tracker scripts, zero cookie consent barriers, and instantaneous propagation.
-              </p>
-            </div>
-
-            <div class="project-actions">
-              <a href="https://snap.clubme.in" target="_blank" class="btn-launch-tool">
-                <span>Launch Utility</span>
-                <span>↗</span>
-              </a>
-              <a href="https://github.com/dev998889" target="_blank" class="btn-git-target">
-                <span>dev998889/snap-url ↗</span>
-              </a>
-            </div>
+        <!-- 02 / Remanence -->
+        <article class="proj-card" style="--card-accent: #f59e0b;" data-cursor="VOIR">
+          <div>
+            <div class="proj-kicker">02 / CAS CLIENT • STRATÉGIE & IDENTITÉ</div>
+            <h3 class="proj-name">Remanence</h3>
+            <p class="proj-desc">
+              Quand la reprise d'un atelier de radiateurs anciens en fonte devient une ode à l'héritage industriel.
+            </p>
+            <a href="https://ownitt.fr/projets/radiateurs-remanence" target="_blank" class="btn-proj-link">
+              <span>VOIR LE PROJET</span>
+              <span>→</span>
+            </a>
           </div>
 
-          <div class="project-right-visual">
-            <div class="visual-top-bar">
-              <span>EDGE_PROPAGATION</span>
-              <span style="color: #22d3ee;">&lt; 14MS</span>
-            </div>
-            <div>
-              <div style="color: #666666; font-size: 11px;">ROUTED VIA</div>
-              <div class="visual-metric-big" style="color: #22d3ee;">320+ POPS</div>
-              <div style="color: #888888; font-size: 11.5px;">SNAP.CLUBME.IN/XYZ</div>
-            </div>
-            <div class="visual-tags">
-              <span class="visual-tag">Vector QR</span>
-              <span class="visual-tag">Edge Worker</span>
-              <span class="visual-tag">Privacy Native</span>
-            </div>
+          <div class="proj-photo-frame">
+            <img 
+              src="https://res.cloudinary.com/dvzsvgucq/image/upload/f_auto,q_auto,w_1200/v1781381390/Poster_yn4gap.webp" 
+              alt="Remanence" 
+              class="proj-photo-img" 
+            />
           </div>
         </article>
 
-        <!-- CARD 03: RegexForge -->
-        <article class="project-card" style="--card-accent: #c084fc;" data-hover-state="VIEW">
-          <div class="project-left-content">
-            <div>
-              <div class="project-meta-pills">
-                <span class="pill-kicker" style="color: #c084fc; border-color: rgba(192,132,252,0.3); background: rgba(192,132,252,0.08);">03 • Developer Suite ⚡</span>
-                <span class="pill-subdomain">regex.clubme.in ↗</span>
-              </div>
-              <h3 class="project-title">RegexForge AST</h3>
-              <p class="project-desc">
-                Deterministic finite automaton (DFA) regular expression debugger. Breaks down cryptic expressions into human-readable syntax trees with polyglot code exports for Python, Go, and TypeScript.
-              </p>
-            </div>
-
-            <div class="project-actions">
-              <a href="https://regex.clubme.in" target="_blank" class="btn-launch-tool">
-                <span>Launch Utility</span>
-                <span>↗</span>
-              </a>
-              <a href="https://github.com/dev998889" target="_blank" class="btn-git-target">
-                <span>dev998889/regex-forge ↗</span>
-              </a>
-            </div>
+        <!-- 03 / TABAM -->
+        <article class="proj-card" style="--card-accent: #06b6d4;" data-cursor="VOIR">
+          <div>
+            <div class="proj-kicker">03 / CAS CLIENT • STRATÉGIE & NAMING</div>
+            <h3 class="proj-name">TABAM</h3>
+            <p class="proj-desc">
+              Votre histoire, vos héros, une vraie BD en quelques clics. De l'idée au nom, de l'identité au site web.
+            </p>
+            <a href="https://ownitt.fr/projets/tabam" target="_blank" class="btn-proj-link">
+              <span>VOIR LE PROJET</span>
+              <span>→</span>
+            </a>
           </div>
 
-          <div class="project-right-visual">
-            <div class="visual-top-bar">
-              <span>AST_PARSER</span>
-              <span style="color: #c084fc;">VALIDATED</span>
-            </div>
-            <div>
-              <div style="color: #666666; font-size: 11px;">MATCH ENGINE</div>
-              <div style="font-size: 15px; color: #ffffff; margin: 10px 0; word-break: break-all;">
-                ^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$
-              </div>
-            </div>
-            <div class="visual-tags">
-              <span class="visual-tag">Polyglot Gen</span>
-              <span class="visual-tag">AST Tree</span>
-              <span class="visual-tag">Zero Lag</span>
-            </div>
+          <div class="proj-photo-frame">
+            <img 
+              src="https://res.cloudinary.com/dvzsvgucq/image/upload/f_webp,fl_awebp,q_auto/v1791229800/tabam-anim-encre-brique-1200_fkno3r.webp" 
+              alt="TABAM" 
+              class="proj-photo-img" 
+            />
           </div>
         </article>
 
-        <!-- CARD 04: TaxPulse 2026 -->
-        <article class="project-card" style="--card-accent: #10b981;" data-hover-state="VIEW">
-          <div class="project-left-content">
-            <div>
-              <div class="project-meta-pills">
-                <span class="pill-kicker" style="color: #34d399; border-color: rgba(52,211,153,0.3); background: rgba(52,211,153,0.08);">04 • India Fiscal 🇮🇳</span>
-                <span class="pill-subdomain">tax.clubme.in ↗</span>
-              </div>
-              <h3 class="project-title">TaxPulse FY26</h3>
-              <p class="project-desc">
-                Side-by-side New vs Old Tax Regime comparator with automated Section 87A rebate calculation, 80C/80D slabs, and 44ADA presumptive taxation optimizer for Indian software professionals.
-              </p>
-            </div>
-
-            <div class="project-actions">
-              <a href="https://tax.clubme.in" target="_blank" class="btn-launch-tool">
-                <span>Launch Utility</span>
-                <span>↗</span>
-              </a>
-              <a href="https://github.com/dev998889" target="_blank" class="btn-git-target">
-                <span>dev998889/tax-pulse ↗</span>
-              </a>
-            </div>
+        <!-- 04 / Peugeot Metropolis -->
+        <article class="proj-card" style="--card-accent: #3b82f6;" data-cursor="VOIR">
+          <div>
+            <div class="proj-kicker">04 / CAS CLIENT • MOTION DESIGN & FILM</div>
+            <h3 class="proj-name">Peugeot Metropolis</h3>
+            <p class="proj-desc">
+              Le Metropolis en prédateur urbain : quand le lion Peugeot reprend ses droits sur la ville contemporaine.
+            </p>
+            <a href="https://ownitt.fr/projets/peugeot-metropolis" target="_blank" class="btn-proj-link">
+              <span>VOIR LE PROJET</span>
+              <span>→</span>
+            </a>
           </div>
 
-          <div class="project-right-visual">
-            <div class="visual-top-bar">
-              <span>REGIME_ARBITRAGE</span>
-              <span style="color: #34d399;">SAVE ₹ 42,500</span>
-            </div>
-            <div>
-              <div style="color: #666666; font-size: 11px;">RECOMMENDED REGIME</div>
-              <div class="visual-metric-big" style="color: #34d399;">NEW REGIME</div>
-              <div style="color: #888888; font-size: 11.5px;">FY 2026-27 COMPLIANT</div>
-            </div>
-            <div class="visual-tags">
-              <span class="visual-tag">Presumptive 44ADA</span>
-              <span class="visual-tag">Export PDF</span>
-            </div>
+          <div class="proj-photo-frame">
+            <img 
+              src="https://res.cloudinary.com/dvzsvgucq/image/upload/f_auto,q_auto,w_800/v1782846189/S0-peugeot-devoile-ses-offres-commerciales-sur-le-scooter-trois-roues-metropolis-195904_shg70y.webp" 
+              alt="Peugeot" 
+              class="proj-photo-img" 
+            />
+          </div>
+        </article>
+
+        <!-- 05 / Hyskatebag -->
+        <article class="proj-card" style="--card-accent: #a855f7;" data-cursor="VOIR">
+          <div>
+            <div class="proj-kicker">05 / CAS CLIENT • BRAND CONTENT</div>
+            <h3 class="proj-name">Hyskatebag</h3>
+            <p class="proj-desc">
+              Clés, briquet, téléphone : le baise-en-ville pensé par des skaters, pour des skaters.
+            </p>
+            <a href="https://ownitt.fr/projets/hyskatebag" target="_blank" class="btn-proj-link">
+              <span>VOIR LE PROJET</span>
+              <span>→</span>
+            </a>
+          </div>
+
+          <div class="proj-photo-frame">
+            <img 
+              src="https://res.cloudinary.com/dvzsvgucq/image/upload/f_auto,q_auto,w_800/v1782852747/3_SACOCHES_kthumc.webp" 
+              alt="Hyskatebag" 
+              class="proj-photo-img" 
+            />
+          </div>
+        </article>
+
+        <!-- 06 / Jean-Baptiste Ancelot -->
+        <article class="proj-card" style="--card-accent: #10b981;" data-cursor="VOIR">
+          <div>
+            <div class="proj-kicker">06 / CAS CLIENT • IDENTITÉ VISUELLE</div>
+            <h3 class="proj-name">Jean-Baptiste Ancelot</h3>
+            <p class="proj-desc">
+              Le vin comme un voyage : l'identité d'un explorateur-sommelier qui a parcouru 90 pays.
+            </p>
+            <a href="https://ownitt.fr/projets/jean-baptiste-ancelot" target="_blank" class="btn-proj-link">
+              <span>VOIR LE PROJET</span>
+              <span>→</span>
+            </a>
+          </div>
+
+          <div class="proj-photo-frame">
+            <img 
+              src="https://res.cloudinary.com/dvzsvgucq/image/upload/f_auto,q_auto,w_1200/v1781385507/jba21_oqy3sc.webp" 
+              alt="Jean-Baptiste Ancelot" 
+              class="proj-photo-img" 
+            />
           </div>
         </article>
 
       </div>
 
-      <!-- Right Side Vertical Paging Index -->
-      <aside class="vertical-timeline">
-        <div class="timeline-item active">01</div>
-        <div class="timeline-item">02</div>
-        <div class="timeline-item">03</div>
-        <div class="timeline-item">04</div>
+      <!-- Right Sticky Timeline -->
+      <aside class="sticky-timeline">
+        <div class="time-node active">01</div>
+        <div class="time-node">02</div>
+        <div class="time-node">03</div>
+        <div class="time-node">04</div>
+        <div class="time-node">05</div>
+        <div class="time-node">06</div>
       </aside>
 
     </div>
-
   </section>
 
-  <!-- 5. Kinetic Hover Text (The 4 Invariants) -->
-  <section class="section-kinetic">
-    <div class="kinetic-header">
-      <div style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px;">
-        [ Engineering Invariants ]
-      </div>
-      <h3 style="font-family: var(--font-display); font-size: 38px; font-weight: 800; text-transform: uppercase;">
-        Les 4 Règles Inviolables
-      </h3>
+  <!-- 10. Services Section (Matches 00:30 - 00:32 of Video) -->
+  <section class="section-services">
+    <div class="services-top-text">
+      SURVOLEZ CHAQUE TERRITOIRE POUR DÉCOUVRIR CE QU'ON Y DÉPLOIE
     </div>
 
-    <div class="kinetic-list">
+    <div class="services-stack">
+      <div class="service-row" data-cursor="EXPLORER">
+        <div class="service-left">
+          <span class="service-num">01</span>
+          <span class="service-name">STRATÉGIE</span>
+        </div>
+        <span class="service-details">Audit & diagnostic, Plateforme de marque, Positionnement, Naming</span>
+      </div>
+
+      <div class="service-row" data-cursor="EXPLORER">
+        <div class="service-left">
+          <span class="service-num">02</span>
+          <span class="service-name">IDENTITÉ DE MARQUE</span>
+        </div>
+        <span class="service-details">Logo, Identité visuelle, Charte graphique, Direction artistique</span>
+      </div>
+
+      <div class="service-row" data-cursor="EXPLORER">
+        <div class="service-left">
+          <span class="service-num">03</span>
+          <span class="service-name">SITE INTERNET</span>
+        </div>
+        <span class="service-details">Création de site, Refonte, Webdesign, UX / UI, Développement, SEO</span>
+      </div>
+
+      <div class="service-row" data-cursor="EXPLORER">
+        <div class="service-left">
+          <span class="service-num">04</span>
+          <span class="service-name">PUBLICITÉ</span>
+        </div>
+        <span class="service-details">Concept créatif, Campagnes, Photo & vidéo, Motion design</span>
+      </div>
+
+      <div class="service-row" data-cursor="EXPLORER">
+        <div class="service-left">
+          <span class="service-num">05</span>
+          <span class="service-name">ACTIVATION & DIGITAL</span>
+        </div>
+        <span class="service-details">Social media, Contenu, Community management, Influence</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. Clients Wall (Matches 00:33 - 00:36 of Video) -->
+  <section class="section-clients">
+    <div class="clients-inner">
+      <div class="clients-kicker">[ ILS NOUS ONT FAIT CONFIANCE ]</div>
       
-      <div class="kinetic-row" data-hover-state="RULE">
-        <div class="kinetic-title-box">
-          <span class="kinetic-num">01</span>
-          <span class="kinetic-text">Zero Recurring Cloud Costs</span>
-        </div>
-        <span class="kinetic-desc-sub">No monthly server bills, forever.</span>
+      <div class="clients-names-list">
+        <div>Audi</div>
+        <div>Monsieur Txokola</div>
+        <div>HSBC</div>
+        <div>Nüjah</div>
+        <div>Petit Bateau</div>
+        <div>Scène Nationale</div>
+        <div>Peugeot</div>
       </div>
 
-      <div class="kinetic-row" data-hover-state="RULE">
-        <div class="kinetic-title-box">
-          <span class="kinetic-num">02</span>
-          <span class="kinetic-text">Atomic Crash Resilience</span>
-        </div>
-        <span class="kinetic-desc-sub">No broken code ever deploys on mid-cycle crash.</span>
-      </div>
-
-      <div class="kinetic-row" data-hover-state="RULE">
-        <div class="kinetic-title-box">
-          <span class="kinetic-num">03</span>
-          <span class="kinetic-text">Dedicated Isolated Git</span>
-        </div>
-        <span class="kinetic-desc-sub">Pushed strictly to github.com/dev998889.</span>
-      </div>
-
-      <div class="kinetic-row" data-hover-state="RULE">
-        <div class="kinetic-title-box">
-          <span class="kinetic-num">04</span>
-          <span class="kinetic-text">Haute Précision Execution</span>
-        </div>
-        <span class="kinetic-desc-sub">Zero AI slop. Human craft and instant utility.</span>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 6. Live Autonomous Terminal -->
-  <section class="section-console">
-    <div class="console-box">
-      <div class="console-header">
-        <span>ClubMe Engine Daemon • Surveillance Système</span>
-        <span class="c-highlight">● Armé (09:00 — 02:00 IST)</span>
-      </div>
-
-      <div class="console-logs">
-        <div class="c-line">
-          <span class="c-num">01</span>
-          <span>power_guard.inspect():</span>
-          <span class="c-ok">AC_MAINS_CONNECTED (100% Battery OK)</span>
-        </div>
-        <div class="c-line">
-          <span class="c-num">02</span>
-          <span>daily_lock.verify():</span>
-          <span class="c-highlight">LOCKED (Current IST cycle recorded in completed_today.txt)</span>
-        </div>
-        <div class="c-line">
-          <span class="c-num">03</span>
-          <span>cloudflare_routing.status():</span>
-          <span class="c-ok">*.clubme.in CNAME ➜ cname.vercel-dns.com (ACTIVE)</span>
-        </div>
-        <div class="c-line">
-          <span class="c-num">04</span>
-          <span>git_remote.target():</span>
-          <span class="c-ok">https://github.com/dev998889 (TARGET ISOLATED)</span>
-        </div>
-        <div class="c-line">
-          <span class="c-num">05</span>
-          <span>telegram_bot.listener():</span>
-          <span class="c-ok">@my_dailysaas_alert_bot (READY TO BROADCAST)</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 7. Bottom Massive Footer with Spinning Sunburst & Monumental Wordmark -->
-  <section class="section-bottom">
-    
-    <div class="bottom-cta-inner">
       <div>
-        <h2 class="bottom-headline">
-          Follow the daily <em>dispatch.</em>
-        </h2>
-        <p class="bottom-sub">
-          Receive a direct alert on Telegram every time an autonomous micro-SaaS is deployed, complete with architectural notes, direct subdomain URL, and marketing hooks.
-        </p>
+        <span style="font-size: 26px; font-weight: 700; color: #000000;">Bientôt,</span>
+        <span class="client-highlight-pill">VOTRE NOM ICI ?</span>
+      </div>
+    </div>
+  </section>
 
-        <a href="https://t.me/my_dailysaas_alert_bot" target="_blank" class="btn-massive-black">
-          <span>Connect to @my_dailysaas_alert_bot</span>
-          <span>→</span>
-        </a>
+  <!-- 12. Bottom Section & Monumental Wordmark (Matches 00:37 - 00:40) -->
+  <footer class="section-footer">
+    <div class="footer-top-grid">
+      <div>
+        <h2 class="footer-heading">
+          Recevez la lettre, <br>
+          <span style="font-family: var(--font-serif); font-style: italic; text-transform: none;">sans bla-bla.</span>
+        </h2>
+
+        <div class="footer-newsletter-wrap">
+          <input type="email" placeholder="votre@email.com" class="footer-input" />
+          <button class="btn-footer-sub">
+            <span>S'INSCRIRE</span>
+            <span>→</span>
+          </button>
+        </div>
       </div>
 
-      <div class="bottom-right-station">
-        <!-- 12-Arm Sunburst Asterisk -->
-        <svg class="spin-star-green" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <div class="footer-right-col">
+        <svg class="footer-spinning-star" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M50 0V100M0 50H100M14.64 14.64L85.36 85.36M14.64 85.36L85.36 14.64M5.8 25L94.2 75M5.8 75L94.2 25M25 5.8L75 94.2M25 94.2L75 5.8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
         </svg>
 
-        <div class="bottom-contact-links">
-          <div><a href="https://github.com/dev998889" target="_blank">GitHub: @dev998889 ↗</a></div>
-          <div><a href="https://t.me/my_dailysaas_alert_bot" target="_blank">Telegram: Alert Bot ↗</a></div>
-          <div><a href="mailto:contact@clubme.in">Desk: contact@clubme.in</a></div>
+        <div class="footer-social-links">
+          <div style="font-weight: 700; color: #000000;">06 65 51 19 93</div>
+          <div><a href="https://instagram.com/ownitt.agency" target="_blank">Instagram ↗</a></div>
+          <div><a href="https://linkedin.com" target="_blank">LinkedIn ↗</a></div>
+          <div><a href="mailto:contact@ownitt.fr">contact@ownitt.fr</a></div>
         </div>
       </div>
     </div>
 
-    <!-- Giant Monumental Wordmark Clipped at Bottom (like OWNITT) -->
-    <div class="giant-monument-footer">
-      CLUBME
+    <!-- Giant Monumental Wordmark (Matches last frame of Video) -->
+    <div class="giant-footer-wordmark">
+      ownitt
     </div>
+  </footer>
 
-  </section>
-
-  <!-- Interactive Smooth Physics Script -->
+  <!-- Scripts: Intro Dismiss Physics + Magnetic Follower Cursor + Theme Shift -->
   <script>
-    // Smooth Magnetic Cursor Physics (Exact ownitt style)
+    // 1. Intro Animation Logic (Fullscreen to Header)
+    const introOverlay = document.getElementById('intro-overlay');
+    const introSkipBtn = document.getElementById('intro-skip');
+    let introDismissed = false;
+
+    function dismissIntro() {
+      if (introDismissed) return;
+      introDismissed = true;
+      introOverlay.classList.add('dismissed');
+      ring.classList.add('mode-scroll');
+      ring.textContent = 'SCROLL';
+    }
+
+    introSkipBtn.addEventListener('click', dismissIntro);
+    window.addEventListener('wheel', (e) => {
+      if (e.deltaY > 10) dismissIntro();
+    }, { passive: true });
+    window.addEventListener('touchmove', dismissIntro, { passive: true });
+    window.addEventListener('keydown', dismissIntro);
+
+    // 2. Custom Magnetic Cursor Physics
     const dot = document.getElementById('cursor-dot');
-    const follower = document.getElementById('cursor-follower');
-    
+    const ring = document.getElementById('cursor-ring');
+
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
-    let followerX = mouseX;
-    let followerY = mouseY;
+    let ringX = mouseX;
+    let ringY = mouseY;
 
     window.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
@@ -1622,50 +1494,55 @@
       dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
     });
 
-    // Buttery smooth lerp animation loop for follower
-    function animateCursor() {
-      followerX += (mouseX - followerX) * 0.15;
-      followerY += (mouseY - followerY) * 0.15;
-      follower.style.transform = `translate(${followerX}px, ${followerY}px) translate(-50%, -50%)`;
-      requestAnimationFrame(animateCursor);
+    function updateCursor() {
+      ringX += (mouseX - ringX) * 0.16;
+      ringY += (mouseY - ringY) * 0.16;
+      ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+      requestAnimationFrame(updateCursor);
     }
-    animateCursor();
+    updateCursor();
 
-    // Hover context handling
-    document.querySelectorAll('a, button, [data-hover-state]').forEach(el => {
+    // Context Hover Handling
+    document.querySelectorAll('[data-cursor]').forEach(el => {
       el.addEventListener('mouseenter', () => {
-        const state = el.getAttribute('data-hover-state');
-        if (state === 'VIEW') {
-          follower.textContent = 'VIEW';
-          follower.classList.add('show-view');
-        } else if (state === 'RULE') {
-          follower.textContent = 'RULE';
-          follower.classList.add('show-view');
-        } else {
-          dot.classList.add('active-hover');
+        const mode = el.getAttribute('data-cursor');
+        ring.textContent = mode;
+        ring.classList.add('mode-view');
+        dot.classList.add('hovered');
+      });
+      el.addEventListener('mouseleave', () => {
+        ring.textContent = introDismissed ? 'SCROLL' : '';
+        ring.classList.remove('mode-view');
+        dot.classList.remove('hovered');
+      });
+    });
+
+    document.querySelectorAll('a, button, input').forEach(el => {
+      if (!el.getAttribute('data-cursor')) {
+        el.addEventListener('mouseenter', () => dot.classList.add('hovered'));
+        el.addEventListener('mouseleave', () => dot.classList.remove('hovered'));
+      }
+    });
+
+    // 3. Theme Shift on Scroll
+    const siteHeader = document.getElementById('site-header');
+    const creamSections = document.querySelectorAll('.section-cream, .section-definition, .section-clients, .section-footer');
+
+    window.addEventListener('scroll', () => {
+      let isOverCream = false;
+      creamSections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top <= 60 && rect.bottom >= 60) {
+          isOverCream = true;
         }
       });
 
-      el.addEventListener('mouseleave', () => {
-        follower.textContent = '';
-        follower.classList.remove('show-view');
-        dot.classList.remove('active-hover');
-      });
-    });
-
-    // Theme flip detection for header (Cream section trigger)
-    const header = document.getElementById('site-header');
-    const creamSection = document.getElementById('cream-section');
-
-    window.addEventListener('scroll', () => {
-      const rect = creamSection.getBoundingClientRect();
-      if (rect.top <= 60 && rect.bottom >= 60) {
-        header.classList.add('theme-cream');
+      if (isOverCream) {
+        siteHeader.classList.add('theme-cream');
       } else {
-        header.classList.remove('theme-cream');
+        siteHeader.classList.remove('theme-cream');
       }
     });
   </script>
-
 </body>
 </html>
