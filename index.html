@@ -3,39 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CLUBME — Autonomous Micro-SaaS Foundry & Venture Lab</title>
-  <meta name="description" content="Autonomous software foundry engineering and deploying 1 production-grade micro-tool every 24 hours. Zero recurring server costs. Zero compromise.">
+  <title>CLUBME — Studio de Micro-SaaS Autonome & Foundry</title>
+  <meta name="description" content="Studio autonome d'ingénierie logicielle. Nous concevons et déployons 1 micro-outil de production toutes les 24 heures. Zéro coût de serveur. Zéro compromis.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 
-  <!-- Awwwards / High-Fashion Luxury Typography (exact ownitt.fr DNA) -->
+  <!-- Fonts directly inspired by ownitt.fr: Ultra-Condensed Display + High Fashion Italic Serif + Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     /* ==========================================================================
-       OWNITT.FR INSPIRED LUXURY CREATIVE AGENCY & FOUNDRY
-       - Pure Velvet Black (#000000)
-       - Monumental Condensed Typography (Syne 800)
-       - Haute-Couture Serif Italic (Playfair Display)
-       - Electric Acid Lime Accents (#d4ff00)
-       - Minimalist Geometric Controls & Horizontal Work Index
+       OWNITT.FR EXACT AESTHETIC & INTERACTION SYSTEM FOR CLUBME.IN
+       - Custom Magnetic Mouse Cursor with context states ('SCROLL', 'VIEW')
+       - Velvet Black (#000000) ⇄ Warm Ivory Cream (#f5f2ea) Theme Shift
+       - Spinning 12-arm Acid Sunburst Asterisk
+       - Monumental Typography + Playfair Haute-Couture Italic Serif
+       - Pinned Showcase Cards with Right-hand Vertical Index (01, 02, 03, 04)
+       - Hover Stroke Kinetic Marquee
+       - Bottom Giant Wordmark Clipped at Viewport Edge
        ========================================================================== */
 
     :root {
       --bg: #000000;
-      --bg-surface: #070707;
-      --bg-card: #0a0a0a;
-      --border: rgba(255, 255, 255, 0.12);
-      --border-subtle: rgba(255, 255, 255, 0.06);
-      --border-hover: rgba(255, 255, 255, 0.35);
-      
       --text: #ffffff;
-      --text-muted: #8e8e8e;
-      --text-dim: #555555;
-      
+      --cream: #f4f0e6;
+      --cream-card: #e8e3d5;
+      --dark-card: #0c0d10;
       --acid: #d4ff00;          /* Ownitt signature electric lime */
-      --acid-glow: rgba(212, 255, 0, 0.28);
+      --acid-glow: rgba(212, 255, 0, 0.35);
+      
+      --border-dark: rgba(255, 255, 255, 0.12);
+      --border-cream: rgba(0, 0, 0, 0.12);
       
       --font-display: 'Syne', -apple-system, sans-serif;
       --font-serif: 'Playfair Display', Georgia, serif;
@@ -52,6 +51,7 @@
     html {
       scroll-behavior: smooth;
       background-color: var(--bg);
+      color: var(--text);
     }
 
     body {
@@ -63,27 +63,77 @@
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
       min-height: 100vh;
+      cursor: none; /* Replaced by custom magnetic cursor */
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    a, button {
+      cursor: none; /* Handled by magnetic cursor */
     }
 
-    button {
-      font-family: inherit;
-      cursor: pointer;
-      border: none;
-      background: none;
+    /* 1. Custom Smooth Magnetic Cursor */
+    .custom-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #ffffff;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.25s ease, height 0.25s ease, background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+      mix-blend-mode: difference;
     }
 
-    .container {
-      max-width: 1320px;
-      margin: 0 auto;
-      padding: 0 32px;
+    .cursor-follower {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #ffffff;
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, background-color 0.2s ease;
+      mix-blend-mode: difference;
     }
 
-    /* Fixed Floating Badge on Right Edge (Ownitt 'W.' Badge style) */
+    .custom-cursor.active-hover {
+      width: 32px;
+      height: 32px;
+      background: var(--acid);
+      mix-blend-mode: normal;
+    }
+
+    .cursor-follower.show-scroll {
+      width: 74px;
+      height: 74px;
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .cursor-follower.show-view {
+      width: 80px;
+      height: 80px;
+      background: var(--acid);
+      color: #000000;
+      border-color: var(--acid);
+      mix-blend-mode: normal;
+    }
+
+    /* Fixed Awwwards Badge on Right Edge (ownitt 'W.' badge) */
     .edge-badge {
       position: fixed;
       right: 0;
@@ -104,45 +154,60 @@
       font-size: 14px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.8);
       transition: width 0.25s ease, background-color 0.2s ease;
-      cursor: pointer;
+      cursor: none;
     }
     .edge-badge:hover {
-      width: 56px;
+      width: 58px;
       background: var(--acid);
     }
 
-    /* Top Navigation Strip */
+    /* 2. Top Header Navigation */
     .site-header {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 90;
-      padding: 20px 40px;
+      padding: 24px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
     }
 
-    .nav-brand-text {
+    .site-header.theme-cream {
+      background: rgba(244, 240, 230, 0.85);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      color: #000000;
+    }
+
+    .nav-brand-title {
       font-family: var(--font-display);
-      font-size: 19px;
+      font-size: 21px;
       font-weight: 800;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
       text-transform: uppercase;
-      color: #ffffff;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .nav-brand-sub {
+    .nav-brand-title em {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: 13px;
+      font-size: 14px;
       color: var(--acid);
-      margin-left: 8px;
+      text-transform: none;
+    }
+    .site-header.theme-cream .nav-brand-title em {
+      color: #000000;
+      background: var(--acid);
+      padding: 0 4px;
     }
 
     .nav-controls {
@@ -151,105 +216,90 @@
       gap: 16px;
     }
 
-    .btn-circle-menu {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
+    .btn-menu-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 9999px;
       border: 1px solid rgba(255, 255, 255, 0.2);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: inherit;
+      background: rgba(255, 255, 255, 0.04);
+      transition: all 0.25s ease;
+    }
+
+    .site-header.theme-cream .btn-menu-pill {
+      border-color: rgba(0, 0, 0, 0.2);
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    .btn-menu-pill:hover {
+      border-color: var(--acid);
+      background: var(--acid);
+      color: #000000;
+    }
+
+    .hamburger-icon {
+      width: 14px;
+      height: 9px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      background: rgba(255, 255, 255, 0.05);
+      justify-content: space-between;
     }
-
-    .btn-circle-menu span {
+    .hamburger-icon span {
       display: block;
-      width: 18px;
+      width: 100%;
       height: 1.5px;
-      background: #ffffff;
-      transition: all 0.3s ease;
+      background: currentColor;
     }
 
-    .btn-circle-menu:hover {
-      border-color: var(--acid);
-      transform: scale(1.06);
-    }
-
-    .btn-circle-menu:hover span {
-      background: var(--acid);
-    }
-
-    /* 1. Monumental Hero Stage (Ownitt Style) */
+    /* 3. Hero Section (Ownitt Monumental Typography & Visual) */
     .hero-stage {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 170px 24px 80px;
+      justify-content: space-between;
+      padding: 140px 40px 50px;
       position: relative;
     }
 
-    .monument-logo {
-      font-family: var(--font-display);
-      font-size: clamp(80px, 16.5vw, 220px);
-      font-weight: 800;
-      letter-spacing: -0.05em;
-      line-height: 0.85;
+    .hero-top-announcement {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
       text-transform: uppercase;
-      color: #ffffff;
-      user-select: none;
-      margin-bottom: 22px;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 30px;
     }
 
-    .monument-logo span {
-      display: inline-block;
-      transition: color 0.3s ease, transform 0.3s ease;
+    .hero-main-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      align-items: center;
+      gap: 40px;
+      margin: auto 0;
     }
 
-    .monument-logo:hover span {
-      color: var(--acid);
-    }
-
-    .monument-subscript {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: clamp(14px, 2.2vw, 22px);
-      color: #ffffff;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      display: inline-block;
-      padding-bottom: 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-      margin-bottom: 56px;
-    }
-
-    .monument-subscript em {
-      font-style: normal;
-      color: var(--acid);
-    }
-
-    /* Hero Manifesto Statement */
-    .hero-manifesto {
-      max-width: 1040px;
-      margin: 0 auto 52px;
-    }
-
-    .manifesto-line {
+    .hero-headline-box h1 {
       font-family: var(--font-display);
-      font-size: clamp(26px, 4.4vw, 56px);
+      font-size: clamp(34px, 5.2vw, 76px);
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
       color: #ffffff;
+      margin-bottom: 24px;
     }
 
-    .manifesto-serif-italic {
+    .hero-headline-box h1 .serif-italic {
       font-family: var(--font-serif);
       font-style: italic;
       font-weight: 400;
@@ -258,700 +308,1364 @@
       color: var(--acid);
     }
 
-    .hero-meta-row {
+    .hero-deck {
+      font-size: clamp(15px, 1.3vw, 19px);
+      line-height: 1.6;
+      color: #aaaaaa;
+      max-width: 620px;
+      margin-bottom: 36px;
+    }
+
+    .hero-deck strong {
+      color: #ffffff;
+    }
+
+    .hero-cta-row {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 32px;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--text-muted);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+      gap: 16px;
       flex-wrap: wrap;
     }
 
-    .meta-tag-dot {
+    .btn-pill-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      color: #000000;
+      font-family: var(--font-display);
+      font-size: 13.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 14px 30px;
+      border-radius: 9999px;
+      transition: all 0.25s ease;
+      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-pill-primary:hover {
+      background: var(--acid);
+      transform: scale(1.03);
+      box-shadow: 0 15px 35px var(--acid-glow);
+    }
+
+    .btn-pill-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      border: 1px solid var(--border-dark);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      padding: 13px 24px;
+      border-radius: 9999px;
+      transition: all 0.25s ease;
+    }
+
+    .btn-pill-secondary:hover {
+      border-color: #ffffff;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    /* Hero Dramatic Visual (Right Column, Chess / High Contrast Style) */
+    .hero-visual-frame {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border-dark);
+      background: #090a0f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+    }
+
+    .visual-sculpture {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(125%) brightness(90%);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+    }
+
+    .hero-visual-frame:hover .visual-sculpture {
+      transform: scale(1.05);
+      filter: grayscale(80%) contrast(130%) brightness(100%);
+    }
+
+    .visual-overlay-tag {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .hero-bottom-ticker {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .pulse-dot {
       display: inline-block;
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: var(--acid);
-      box-shadow: 0 0 12px var(--acid);
+      box-shadow: 0 0 10px var(--acid);
       margin-right: 6px;
+      animation: pulseAnim 2s infinite;
     }
 
-    /* 2. Philosophy & Editorial Statement */
-    .philosophy-section {
-      padding: 120px 0;
-      border-top: 1px solid var(--border-subtle);
+    @keyframes pulseAnim {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
     }
 
-    .philosophy-grid {
-      display: grid;
-      grid-template-columns: 1fr 2.2fr;
-      gap: 60px;
+    /* 4. THEME FLIP SECTION: WARM CREAM MANIFESTO (#f4f0e6) */
+    .section-cream {
+      background-color: var(--cream);
+      color: #000000;
+      padding: 130px 40px;
+      position: relative;
+      transition: background-color 0.4s ease;
     }
 
-    .section-kicker {
+    .cream-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cream-tag {
       font-family: var(--font-mono);
       font-size: 12px;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--text-dim);
+      letter-spacing: 0.15em;
+      color: #777777;
+      margin-bottom: 24px;
     }
 
-    .philosophy-body {
+    .cream-huge-title {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 7vw, 96px);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      color: #000000;
+      margin-bottom: 60px;
+    }
+
+    .cream-huge-title em {
       font-family: var(--font-serif);
-      font-size: clamp(24px, 3.4vw, 44px);
+      font-style: italic;
+      font-weight: 400;
+      text-transform: none;
+    }
+
+    /* Center floating black card with spinning flower */
+    .cream-interactive-card {
+      background: #000000;
+      color: #ffffff;
+      border-radius: 24px;
+      padding: 60px 48px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      align-items: center;
+      gap: 40px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cream-card-text {
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 2.8vw, 38px);
       line-height: 1.35;
       color: #ffffff;
     }
 
-    .philosophy-body em {
+    .cream-card-text em {
       font-style: italic;
       color: var(--acid);
     }
 
-    .philosophy-footnote {
-      margin-top: 40px;
-      font-family: var(--font-mono);
-      font-size: 13px;
-      color: var(--text-muted);
-      max-width: 580px;
+    .cream-card-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* Rotating 12-arm Asterisk / Flower Icon */
+    .spinning-asterisk {
+      width: 110px;
+      height: 110px;
+      animation: spinAsterisk 16s linear infinite;
+      color: var(--acid);
+      margin-bottom: 16px;
+    }
+
+    @keyframes spinAsterisk {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .cream-sub-definition {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      font-size: 16px;
       line-height: 1.7;
+      color: #333333;
     }
 
-    /* 3. The Work / Products Showcase (High Fashion Minimal Index) */
-    .showcase-section {
-      padding: 90px 0 150px;
-      border-top: 1px solid var(--border-subtle);
+    .cream-sub-definition strong {
+      color: #000000;
     }
 
-    .showcase-header {
+    /* 5. BLACK MANIFESTO QUOTES (The ownitt green punchlines) */
+    .section-punchlines {
+      background: #000000;
+      color: #ffffff;
+      padding: 140px 40px;
+      border-top: 1px solid var(--border-dark);
+      border-bottom: 1px solid var(--border-dark);
+    }
+
+    .punchline-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+
+    .punchline-block {
+      border-left: 2px solid rgba(255, 255, 255, 0.15);
+      padding-left: 36px;
+      transition: border-color 0.3s ease;
+    }
+
+    .punchline-block:hover {
+      border-color: var(--acid);
+    }
+
+    .punchline-top-sans {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4.4vw, 58px);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .punchline-bottom-serif {
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 4vw, 54px);
+      font-style: italic;
+      color: var(--acid);
+      line-height: 1.15;
+    }
+
+    /* 6. PINNED WORK SHOWCASE (The Horizontal / Paged Slider Cards) */
+    .section-showcase {
+      background: #000000;
+      padding: 120px 40px 160px;
+      position: relative;
+    }
+
+    .showcase-top-bar {
+      max-width: 1200px;
+      margin: 0 auto 60px;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      margin-bottom: 60px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-dark);
       flex-wrap: wrap;
-      gap: 24px;
+      gap: 20px;
     }
 
-    .showcase-title {
+    .showcase-title-box h2 {
       font-family: var(--font-display);
-      font-size: clamp(38px, 5.2vw, 68px);
+      font-size: clamp(36px, 5.5vw, 72px);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .showcase-title-box h2 span {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--acid);
+      font-size: 0.6em;
+      margin-left: 12px;
+    }
+
+    /* Pinned Deck Layout */
+    .pinned-deck-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 100px;
+      gap: 40px;
+    }
+
+    .cards-deck-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    /* Large Project Card (Ownitt Burger King / Tabam style) */
+    .project-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border-dark);
+      border-radius: 20px;
+      padding: 44px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      align-items: center;
+      gap: 40px;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+      transform: translateY(-4px);
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--card-accent, var(--acid)), transparent);
+      opacity: 0.8;
+    }
+
+    .project-left-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .project-meta-pills {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .pill-kicker {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--acid);
+      background: rgba(212, 255, 0, 0.08);
+      border: 1px solid rgba(212, 255, 0, 0.25);
+      padding: 3px 10px;
+      border-radius: 9999px;
+    }
+
+    .pill-subdomain {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #888888;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-dark);
+      padding: 3px 10px;
+      border-radius: 9999px;
+    }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.4vw, 44px);
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: -0.03em;
       color: #ffffff;
-      line-height: 1;
+      line-height: 1.1;
+      margin-bottom: 16px;
     }
 
-    .showcase-count {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 26px;
-      color: var(--acid);
-      margin-left: 10px;
+    .project-desc {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #a0a0a0;
+      margin-bottom: 30px;
     }
 
-    /* Interactive Index Table (Ownitt Work rows) */
-    .work-index {
-      border-top: 1px solid var(--border);
-    }
-
-    .work-row {
-      display: grid;
-      grid-template-columns: 80px 2.2fr 1.6fr 1fr 120px;
+    .project-actions {
+      display: flex;
       align-items: center;
-      padding: 38px 16px;
-      border-bottom: 1px solid var(--border);
-      transition: background-color 0.25s ease, padding 0.25s ease;
-      cursor: pointer;
-      position: relative;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
-    .work-row:hover {
-      background: #090909;
-      padding-left: 28px;
-    }
-
-    .work-num {
-      font-family: var(--font-mono);
-      font-size: 14px;
-      color: var(--text-dim);
-    }
-
-    .work-name {
+    .btn-launch-tool {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      color: #000000;
       font-family: var(--font-display);
-      font-size: clamp(22px, 2.8vw, 38px);
+      font-size: 13px;
       font-weight: 800;
-      letter-spacing: -0.02em;
       text-transform: uppercase;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      transition: color 0.2s ease;
-    }
-
-    .work-row:hover .work-name {
-      color: var(--acid);
-    }
-
-    .work-category {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 17px;
-      color: var(--text-muted);
-    }
-
-    .work-market-pill {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 4px 10px;
-      border: 1px solid var(--border);
+      padding: 10px 22px;
       border-radius: 9999px;
-      color: var(--text-muted);
-      width: fit-content;
-    }
-
-    .work-action {
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    .btn-circle-arrow {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      color: #ffffff;
       transition: all 0.25s ease;
     }
 
-    .work-row:hover .btn-circle-arrow {
+    .btn-launch-tool:hover {
       background: var(--acid);
-      color: #000000;
-      border-color: var(--acid);
-      transform: rotate(45deg);
+      transform: scale(1.03);
     }
 
-    /* 4. The 4 Invariants */
-    .invariants-section {
-      padding: 130px 0;
-      border-top: 1px solid var(--border-subtle);
-      background: #040404;
+    .btn-git-target {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #888888;
+      padding: 9px 16px;
+      border: 1px solid var(--border-dark);
+      border-radius: 9999px;
+      transition: all 0.25s ease;
     }
 
-    .invariants-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 32px;
-      margin-top: 60px;
+    .btn-git-target:hover {
+      color: #ffffff;
+      border-color: #ffffff;
     }
 
-    .invariant-card {
-      padding: 32px 24px;
-      border-left: 1px solid var(--border);
+    /* Right visual box inside project card */
+    .project-right-visual {
+      height: 280px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #000000;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
       position: relative;
+      overflow: hidden;
     }
 
-    .invariant-roman {
-      font-family: var(--font-serif);
-      font-style: italic;
+    .visual-top-bar {
+      display: flex;
+      justify-content: space-between;
+      color: #555555;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 12px;
+    }
+
+    .visual-metric-big {
       font-size: 28px;
-      color: var(--acid);
-      margin-bottom: 24px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 12px 0 4px;
     }
 
-    .invariant-title {
+    .visual-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .visual-tag {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 10.5px;
+      color: #888888;
+    }
+
+    /* Vertical Number Timeline on the Right */
+    .vertical-timeline {
+      position: sticky;
+      top: 140px;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: #333333;
+    }
+
+    .timeline-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s ease;
+    }
+
+    .timeline-item.active {
+      color: var(--acid);
+      font-weight: 700;
+    }
+
+    .timeline-item.active::before {
+      content: '—';
+      color: var(--acid);
+    }
+
+    /* 7. KINETIC TEXT HOVER MARQUEE (The 4 Invariants) */
+    .section-kinetic {
+      background: #000000;
+      padding: 100px 0 140px;
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .kinetic-header {
+      max-width: 1200px;
+      margin: 0 auto 40px;
+      padding: 0 40px;
+    }
+
+    .kinetic-list {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .kinetic-row {
+      padding: 32px 40px;
+      border-bottom: 1px solid var(--border-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.3s ease;
+      cursor: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kinetic-row:hover {
+      background-color: #080808;
+    }
+
+    .kinetic-title-box {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .kinetic-num {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      color: #444444;
+    }
+
+    .kinetic-text {
       font-family: var(--font-display);
-      font-size: 18px;
+      font-size: clamp(26px, 3.8vw, 54px);
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.02em;
       color: #ffffff;
-      margin-bottom: 14px;
-      line-height: 1.2;
+      transition: color 0.25s ease;
     }
 
-    .invariant-desc {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.6;
+    .kinetic-row:hover .kinetic-text {
+      color: var(--acid);
     }
 
-    /* 5. Autonomous Terminal Live Feed */
-    .terminal-section {
-      padding: 90px 0 130px;
-      border-top: 1px solid var(--border-subtle);
+    .kinetic-desc-sub {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 18px;
+      color: #777777;
     }
 
-    .dark-console {
-      background: #060606;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      max-width: 980px;
+    /* 8. LIVE TELEMETRY CONSOLE */
+    .section-console {
+      padding: 80px 40px 120px;
+      background: #000000;
+    }
+
+    .console-box {
+      max-width: 1100px;
       margin: 0 auto;
+      background: #050608;
+      border: 1px solid var(--border-dark);
+      border-radius: 16px;
+      padding: 36px;
       font-family: var(--font-mono);
       font-size: 12.5px;
       box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
     }
 
-    .console-header-row {
+    .console-header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       padding-bottom: 18px;
-      border-bottom: 1px solid var(--border-subtle);
-      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 24px;
       font-size: 11px;
-      color: var(--text-dim);
+      color: #666666;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
     }
 
-    .console-lines {
+    .console-logs {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      line-height: 1.7;
-    }
-
-    .log-line {
-      display: flex;
       gap: 14px;
+      line-height: 1.8;
     }
 
-    .log-prefix {
-      color: var(--text-dim);
+    .c-line {
+      display: flex;
+      gap: 16px;
     }
+    .c-num { color: #444444; }
+    .c-highlight { color: var(--acid); }
+    .c-ok { color: #10b981; }
 
-    .log-active {
-      color: var(--acid);
-    }
-
-    .log-bright {
-      color: #ffffff;
-    }
-
-    /* 6. Bottom Massive CTA (Ownitt Bottom Banner) */
-    .cta-stage {
-      padding: 130px 0 110px;
-      text-align: center;
-      border-top: 1px solid var(--border-subtle);
+    /* 9. BOTTOM MASSIVE FOOTER WITH SPINNING SUNBURST & GIANT WORDMARK */
+    .section-bottom {
+      background: var(--cream);
+      color: #000000;
+      padding: 120px 40px 0;
       position: relative;
+      overflow: hidden;
     }
 
-    .cta-heading {
+    .bottom-cta-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      align-items: center;
+      gap: 60px;
+      margin-bottom: 100px;
+    }
+
+    .bottom-headline {
       font-family: var(--font-display);
-      font-size: clamp(38px, 6.2vw, 92px);
+      font-size: clamp(38px, 6vw, 84px);
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: -0.04em;
       line-height: 1;
-      margin-bottom: 24px;
+      color: #000000;
+      margin-bottom: 20px;
     }
 
-    .cta-heading em {
+    .bottom-headline em {
       font-family: var(--font-serif);
       font-style: italic;
-      color: var(--acid);
       text-transform: none;
     }
 
-    .cta-sub {
-      font-family: var(--font-mono);
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 48px;
-      letter-spacing: 0.04em;
+    .bottom-sub {
+      font-size: 16px;
+      color: #555555;
+      margin-bottom: 36px;
+      max-width: 580px;
     }
 
-    .btn-massive-pill {
+    .btn-massive-black {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      background: #ffffff;
-      color: #000000;
+      gap: 14px;
+      background: #000000;
+      color: #ffffff;
       font-family: var(--font-display);
-      font-size: clamp(12px, 2.2vw, 15px);
+      font-size: 15px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
-      padding: 16px clamp(24px, 3.5vw, 44px);
+      letter-spacing: 0.05em;
+      padding: 18px 40px;
       border-radius: 9999px;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 15px 40px rgba(255, 255, 255, 0.15);
-      max-width: 90vw;
-      text-align: center;
-      justify-content: center;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
     }
 
-    .btn-massive-pill:hover {
+    .btn-massive-black:hover {
       background: var(--acid);
-      transform: scale(1.04);
-      box-shadow: 0 20px 50px var(--acid-glow);
+      color: #000000;
+      transform: scale(1.03);
     }
 
-    /* 7. Colophon Footer */
-    .site-colophon {
-      padding: 60px 0 40px;
-      border-top: 1px solid var(--border-subtle);
+    /* Right side corner info with spinning asterisk */
+    .bottom-right-station {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    .spin-star-green {
+      width: 90px;
+      height: 90px;
+      color: #000000;
+      animation: spinAsterisk 14s linear infinite;
+      margin-bottom: 24px;
+    }
+
+    .bottom-contact-links {
       font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--text-dim);
-      letter-spacing: 0.05em;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
       text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #333333;
     }
 
-    .colophon-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
+    .bottom-contact-links a:hover {
+      color: #000000;
+      font-weight: 700;
     }
 
-    .colophon-links {
-      display: flex;
-      gap: 24px;
-      list-style: none;
+    /* GIANT MONUMENTAL WORDMARK CLIPPED AT BOTTOM */
+    .giant-monument-footer {
+      font-family: var(--font-display);
+      font-size: clamp(80px, 20vw, 320px);
+      font-weight: 800;
+      letter-spacing: -0.06em;
+      line-height: 0.78;
+      text-transform: uppercase;
+      color: #000000;
+      text-align: center;
+      user-select: none;
+      padding-top: 40px;
+      overflow: hidden;
+      white-space: nowrap;
     }
 
-    .colophon-links a {
-      transition: color 0.2s ease;
-    }
-
-    .colophon-links a:hover {
-      color: var(--acid);
-    }
-
-    /* Responsive Breakpoints */
+    /* Responsive */
     @media (max-width: 1024px) {
-      .work-row {
-        grid-template-columns: 50px 1.8fr 1.2fr 1fr 60px;
-      }
-      .invariants-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .hero-main-grid { grid-template-columns: 1fr; }
+      .hero-visual-frame { height: 380px; }
+      .pinned-deck-container { grid-template-columns: 1fr; }
+      .vertical-timeline { display: none; }
+      .project-card { grid-template-columns: 1fr; }
+      .cream-interactive-card { grid-template-columns: 1fr; }
+      .bottom-cta-inner { grid-template-columns: 1fr; }
+      .bottom-right-station { align-items: flex-start; text-align: left; }
     }
 
     @media (max-width: 768px) {
-      .philosophy-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-      .work-row {
-        grid-template-columns: 40px 1fr 60px;
-        gap: 12px;
-      }
-      .work-category, .work-market-pill {
-        display: none;
-      }
-      .invariants-grid {
-        grid-template-columns: 1fr;
-      }
-      .site-header {
-        padding: 20px 24px;
-      }
+      body { cursor: auto; }
+      .custom-cursor, .cursor-follower { display: none; }
+      .site-header { padding: 18px 24px; }
+      .hero-stage { padding: 120px 24px 40px; }
+      .section-cream { padding: 80px 24px; }
+      .section-punchlines { padding: 80px 24px; }
+      .section-showcase { padding: 80px 24px; }
+      .kinetic-row { padding: 24px; flex-direction: column; align-items: flex-start; gap: 8px; }
+      .section-bottom { padding: 80px 24px 0; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Floating Right Edge Badge (Awwwards Style) -->
-  <a href="#showcase" class="edge-badge" title="Active Utilities">
-    <span>4</span>
+  <!-- Custom Magnetic Cursor Follower -->
+  <div class="custom-cursor" id="cursor-dot"></div>
+  <div class="cursor-follower" id="cursor-follower"></div>
+
+  <!-- Awwwards Style Floating Right Edge Badge -->
+  <a href="#showcase" class="edge-badge" title="Shipped Utilities">
+    <span>04</span>
   </a>
 
-  <!-- Header -->
-  <header class="site-header">
-    <div>
-      <span class="nav-brand-text">CLUBME</span>
-      <span class="nav-brand-sub">Studio</span>
-    </div>
+  <!-- Top Header Navigation -->
+  <header class="site-header" id="site-header">
+    <a href="/" class="nav-brand-title">
+      CLUBME <em>Foundry</em>
+    </a>
 
     <div class="nav-controls">
-      <a href="https://t.me/my_dailysaas_alert_bot" target="_blank" class="btn-circle-menu" title="Telegram Alerts">
-        <span></span>
-        <span></span>
+      <a href="https://t.me/my_dailysaas_alert_bot" target="_blank" class="btn-menu-pill">
+        <span class="pulse-dot"></span>
+        <span>Telegram Desk</span>
+      </a>
+      <a href="https://github.com/dev998889" target="_blank" class="btn-menu-pill">
+        <span>GitHub (dev998889)</span>
       </a>
     </div>
   </header>
 
-  <!-- 1. Monumental Hero Stage -->
+  <!-- 1. Hero Stage -->
   <section class="hero-stage">
     
-    <!-- Monolithic Logo -->
-    <h1 class="monument-logo">
-      <span>C</span><span>L</span><span>U</span><span>B</span><span>M</span><span>E</span>
-    </h1>
-
-    <div class="monument-subscript">
-      Autonomous Micro-SaaS Foundry & <em>Systems Lab</em>
+    <div class="hero-top-announcement">
+      <div>[ Autonomous Venture Studio ]</div>
+      <div>IST ACTIVE • 09:00 — 02:00</div>
     </div>
 
-    <!-- The Manifesto Quote (Exact Ownitt Typography Contrast) -->
-    <div class="hero-manifesto">
-      <div class="manifesto-line">
-        We engineer micro-utilities that ship
-      </div>
-      <div class="manifesto-line">
-        before the day <span class="manifesto-serif-italic">ends.</span>
-      </div>
-    </div>
+    <div class="hero-main-grid">
+      
+      <!-- Left Column: Manifesto Headline -->
+      <div class="hero-headline-box">
+        <h1>
+          We engineer micro-utilities that ship before the day <span class="serif-italic">ends.</span>
+        </h1>
 
-    <div class="hero-meta-row">
-      <div>
-        <span class="meta-tag-dot"></span>
-        <span>Autonomous Daemon Active</span>
-      </div>
-      <span>•</span>
-      <div>1 Tool / 24 Hours</div>
-      <span>•</span>
-      <div>Zero Recurring Cost</div>
-      <span>•</span>
-      <div style="color: var(--acid);">100% Free Forever</div>
-    </div>
-
-  </section>
-
-  <!-- 2. Philosophy & Editorial Statement -->
-  <section class="philosophy-section">
-    <div class="container philosophy-grid">
-      <div class="section-kicker">
-        [ The 2026 Manifesto ]
-      </div>
-
-      <div>
-        <p class="philosophy-body">
-          Every single day, our autonomous software engine scans operational friction across <em>India 🇮🇳</em> and the <em>Global 🌍</em> ecosystem. It architects, verifies, and deploys full-stack utilities without human intervention. Persistent server charges are never an option. <em>Zero, yes.</em>
+        <p class="hero-deck">
+          An autonomous software engine scouting operational friction across <strong>India 🇮🇳</strong> and the <strong>Global 🌍</strong> ecosystem. Zero recurring server costs. Verified edge deployments. <strong>100% free forever.</strong>
         </p>
 
-        <div class="philosophy-footnote">
-          A pure client-side and free edge serverless architecture (Cloudflare DNS + Vercel Edge). Zero cloud overhead. Code repositories pushed strictly to <strong style="color: #ffffff;">github.com/dev998889</strong>.
+        <div class="hero-cta-row">
+          <a href="#showcase" class="btn-pill-primary">
+            <span>Explore Shipped Tools</span>
+            <span>↓</span>
+          </a>
+          <a href="https://t.me/my_dailysaas_alert_bot" target="_blank" class="btn-pill-secondary">
+            <span>Join @my_dailysaas_alert_bot ↗</span>
+          </a>
         </div>
       </div>
+
+      <!-- Right Column: Sculptural High-Contrast Art -->
+      <div class="hero-visual-frame" data-hover-state="VIEW">
+        <img 
+          src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1000&auto=format&fit=crop" 
+          alt="Architectural Sculpture" 
+          class="visual-sculpture" 
+        />
+        <div class="visual-overlay-tag">
+          Autonomous Node • Active
+        </div>
+      </div>
+
     </div>
+
+    <!-- Bottom Ticker -->
+    <div class="hero-bottom-ticker">
+      <div>
+        <span class="pulse-dot"></span>
+        <span>Engine Daemon Armed</span>
+      </div>
+      <div>1 Production Micro-Tool / 24 Hours</div>
+      <div>Zero Recurring Server Fees</div>
+      <div style="color: var(--acid);">Direct *.clubme.in Routing</div>
+    </div>
+
   </section>
 
-  <!-- 3. Work & Product Showcase -->
-  <section class="showcase-section" id="showcase">
-    <div class="container">
+  <!-- 2. Warm Ivory Cream Manifesto Section (Theme Flip) -->
+  <section class="section-cream" id="cream-section">
+    <div class="cream-inner">
       
-      <div class="showcase-header">
-        <div>
-          <div class="section-kicker" style="margin-bottom: 12px;">[ The Studio Registry ]</div>
-          <h2 class="showcase-title">
-            Shipped Utilities <span class="showcase-count">(04)</span>
-          </h2>
-        </div>
+      <div class="cream-tag">[ Le Manifeste 2026 ]</div>
 
-        <div class="section-kicker">
-          Production 100% Operational
-        </div>
-      </div>
-
-      <!-- Table of Work (Ownitt Style) -->
-      <div class="work-index">
-        
-        <!-- ROW 01: InvoiceCraft GST -->
-        <a href="https://invoice.clubme.in" target="_blank" class="work-row">
-          <div class="work-num">01</div>
-          <div class="work-name">
-            InvoiceCraft GST
-          </div>
-          <div class="work-category">
-            B2B Invoicing & Dynamic UPI QR
-          </div>
-          <div class="work-market-pill">
-            India 🇮🇳 • Finance
-          </div>
-          <div class="work-action">
-            <div class="btn-circle-arrow">↗</div>
-          </div>
-        </a>
-
-        <!-- ROW 02: EdgeShort -->
-        <a href="https://snap.clubme.in" target="_blank" class="work-row">
-          <div class="work-num">02</div>
-          <div class="work-name">
-            EdgeShort URL
-          </div>
-          <div class="work-category">
-            Sub-Millisecond Vector QR & Shortener
-          </div>
-          <div class="work-market-pill">
-            Global 🌍 • Edge
-          </div>
-          <div class="work-action">
-            <div class="btn-circle-arrow">↗</div>
-          </div>
-        </a>
-
-        <!-- ROW 03: RegexForge -->
-        <a href="https://regex.clubme.in" target="_blank" class="work-row">
-          <div class="work-num">03</div>
-          <div class="work-name">
-            RegexForge AST
-          </div>
-          <div class="work-category">
-            State-Machine Regex Debugger & Exporter
-          </div>
-          <div class="work-market-pill">
-            Dev ⚡ • WASM
-          </div>
-          <div class="work-action">
-            <div class="btn-circle-arrow">↗</div>
-          </div>
-        </a>
-
-        <!-- ROW 04: TaxPulse 2026 -->
-        <a href="https://tax.clubme.in" target="_blank" class="work-row">
-          <div class="work-num">04</div>
-          <div class="work-name">
-            TaxPulse FY26
-          </div>
-          <div class="work-category">
-            New vs Old Tax Regime Arbitrage Calculator
-          </div>
-          <div class="work-market-pill">
-            India 🇮🇳 • Tax
-          </div>
-          <div class="work-action">
-            <div class="btn-circle-arrow">↗</div>
-          </div>
-        </a>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 4. Four Haute-Horlogerie Invariants -->
-  <section class="invariants-section">
-    <div class="container">
-      
-      <div class="section-kicker">
-        [ The 4 Production Invariants ]
-      </div>
-
-      <div class="invariants-grid">
-        <div class="invariant-card">
-          <div class="invariant-roman">I.</div>
-          <h4 class="invariant-title">Zero Recurring Cost</h4>
-          <p class="invariant-desc">
-            Every micro-tool executes on client-side compute or free edge serverless runtimes. Zero recurring AWS or database expenses.
-          </p>
-        </div>
-
-        <div class="invariant-card">
-          <div class="invariant-roman">II.</div>
-          <h4 class="invariant-title">Atomic Resilience</h4>
-          <p class="invariant-desc">
-            Mid-run power interruption never leaves broken code in production. The engine resumes cleanly on next machine startup.
-          </p>
-        </div>
-
-        <div class="invariant-card">
-          <div class="invariant-roman">III.</div>
-          <h4 class="invariant-title">Dedicated Account</h4>
-          <p class="invariant-desc">
-            All daily automated tools are pushed strictly to <code style="color:var(--acid);">dev998889</code> with full repository isolation.
-          </p>
-        </div>
-
-        <div class="invariant-card">
-          <div class="invariant-roman">IV.</div>
-          <h4 class="invariant-title">Zero AI Slop</h4>
-          <p class="invariant-desc">
-            High-fashion typographic rhythm, instant keyboard usability, and immediate practical utility for real users.
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 5. Autonomous Terminal Live Feed -->
-  <section class="terminal-section">
-    <div class="container">
-      <div class="dark-console">
-        <div class="console-header-row">
-          <span>ClubMe Engine Daemon • Surveillance System</span>
-          <span style="color: var(--acid);">● Standby (09:00 — 02:00 IST)</span>
-        </div>
-
-        <div class="console-lines">
-          <div class="log-line">
-            <span class="log-prefix">01</span>
-            <span class="log-bright">Power Guard Policy :</span>
-            <span class="log-active">AC Mains Connected (100% Battery OK)</span>
-          </div>
-          <div class="log-line">
-            <span class="log-prefix">02</span>
-            <span class="log-bright">Daily Lock Status :</span>
-            <span>Active for current IST cycle (completed_today.txt)</span>
-          </div>
-          <div class="log-line">
-            <span class="log-prefix">03</span>
-            <span class="log-bright">Cloudflare DNS Layer :</span>
-            <span class="log-active">*.clubme.in ➜ cname.vercel-dns.com (Active)</span>
-          </div>
-          <div class="log-line">
-            <span class="log-prefix">04</span>
-            <span class="log-bright">Telegram Alert Desk :</span>
-            <span>@my_dailysaas_alert_bot ready to broadcast</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 6. Bottom Massive CTA -->
-  <section class="cta-stage">
-    <div class="container">
-      
-      <h2 class="cta-heading">
-        Follow the daily <em>dispatch.</em>
+      <h2 class="cream-huge-title">
+        We are <em>ClubMe.</em>
       </h2>
 
-      <p class="cta-sub">
-        Receive instant alerts on Telegram every time a new micro-SaaS is deployed with release notes and marketing copy.
-      </p>
+      <!-- Floating Black Box with Spinning Sunburst Flower -->
+      <div class="cream-interactive-card">
+        <div>
+          <p class="cream-card-text">
+            Most software agencies spend months creating slide decks. Our autonomous pipeline scouts, builds, and deploys production tools <em>overnight.</em>
+          </p>
+        </div>
 
-      <a href="https://t.me/my_dailysaas_alert_bot" target="_blank" class="btn-massive-pill">
-        <span>Connect to @my_dailysaas_alert_bot</span>
-        <span>→</span>
-      </a>
+        <div class="cream-card-visual">
+          <!-- 12-Arm Sunburst Asterisk SVG -->
+          <svg class="spinning-asterisk" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 0V100M0 50H100M14.64 14.64L85.36 85.36M14.64 85.36L85.36 14.64M5.8 25L94.2 75M5.8 75L94.2 25M25 5.8L75 94.2M25 94.2L75 5.8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+          </svg>
+          <span style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--acid);">
+            ROTATING 24H DAEMON
+          </span>
+        </div>
+      </div>
+
+      <div class="cream-sub-definition">
+        <div>
+          <strong>The Non-Negotiable Boundary:</strong>
+          <p style="margin-top: 8px;">
+            Every single utility must run purely client-side or on free edge serverless compute. No persistent AWS databases, no credit card burn, no maintenance debt.
+          </p>
+        </div>
+        <div>
+          <strong>Strict Repository Isolation:</strong>
+          <p style="margin-top: 8px;">
+            All automated micro-SaaS repositories are versioned and pushed strictly to <strong style="text-decoration: underline;">github.com/dev998889</strong>. Clean, isolated, and crash-resilient.
+          </p>
+        </div>
+      </div>
 
     </div>
   </section>
 
-  <!-- 7. Colophon Footer -->
-  <footer class="site-colophon">
-    <div class="container colophon-row">
-      <div>
-        © 2026 CLUBME STUDIO • AUTONOMOUS SOFTWARE VENTURE ENGINE
+  <!-- 3. Black High-Impact Punchlines Section -->
+  <section class="section-punchlines">
+    <div class="punchline-wrapper">
+      
+      <div class="punchline-block">
+        <div class="punchline-top-sans">
+          The Real Battle Is Shipping.
+        </div>
+        <div class="punchline-bottom-serif">
+          One production-grade micro-tool every single day.
+        </div>
       </div>
 
-      <ul class="colophon-links">
-        <li><a href="https://github.com/dev998889" target="_blank">GitHub dev998889</a></li>
-        <li><a href="https://t.me/my_dailysaas_alert_bot" target="_blank">Telegram Bot</a></li>
-        <li><a href="mailto:contact@clubme.in">Desk</a></li>
-      </ul>
+      <div class="punchline-block">
+        <div class="punchline-top-sans">
+          Zero Recurring Server Charges.
+        </div>
+        <div class="punchline-bottom-serif">
+          Zero bloat. Zero cloud fees. Zero compromise.
+        </div>
+      </div>
+
+      <div class="punchline-block">
+        <div class="punchline-top-sans">
+          Your Daily Friction Solved.
+        </div>
+        <div class="punchline-bottom-serif">
+          Deployed cleanly on dedicated *.clubme.in subdomains.
+        </div>
+      </div>
+
     </div>
-  </footer>
+  </section>
+
+  <!-- 4. Pinned Work Showcase Section -->
+  <section class="section-showcase" id="showcase">
+    
+    <div class="showcase-top-bar">
+      <div class="showcase-title-box">
+        <div style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase;">
+          [ Verified Production Registry ]
+        </div>
+        <h2>
+          Shipped Utilities <span>(04)</span>
+        </h2>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 12px; color: var(--acid);">
+        ● 100% OPERATIONAL & VERIFIED
+      </div>
+    </div>
+
+    <!-- Pinned Deck -->
+    <div class="pinned-deck-container">
+      
+      <div class="cards-deck-stack">
+        
+        <!-- CARD 01: InvoiceCraft GST -->
+        <article class="project-card" style="--card-accent: #f59e0b;" data-hover-state="VIEW">
+          <div class="project-left-content">
+            <div>
+              <div class="project-meta-pills">
+                <span class="pill-kicker">01 • India SMB 🇮🇳</span>
+                <span class="pill-subdomain">invoice.clubme.in ↗</span>
+              </div>
+              <h3 class="project-title">InvoiceCraft GST</h3>
+              <p class="project-desc">
+                Instant GST-compliant B2B & B2C invoice engine. Generates professional printable PDFs with automated HSN/SAC codes, multi-slab tax breakdown, and embeds dynamic UPI payment QR codes for zero-fee payouts.
+              </p>
+            </div>
+
+            <div class="project-actions">
+              <a href="https://invoice.clubme.in" target="_blank" class="btn-launch-tool">
+                <span>Launch Utility</span>
+                <span>↗</span>
+              </a>
+              <a href="https://github.com/dev998889" target="_blank" class="btn-git-target">
+                <span>dev998889/invoice-craft ↗</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="project-right-visual">
+            <div class="visual-top-bar">
+              <span>INVOICE_ENGINE_PREVIEW</span>
+              <span style="color: var(--acid);">FY 2026-27</span>
+            </div>
+            <div>
+              <div style="color: #666666; font-size: 11px;">TAX BREAKDOWN</div>
+              <div class="visual-metric-big">₹ 18,450.00</div>
+              <div style="color: var(--acid); font-size: 11.5px;">CGST (9%) + SGST (9%) INCLUDED</div>
+            </div>
+            <div class="visual-tags">
+              <span class="visual-tag">UPI QR Embedded</span>
+              <span class="visual-tag">Offline-First</span>
+              <span class="visual-tag">Zero Log</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 02: EdgeShort -->
+        <article class="project-card" style="--card-accent: #06b6d4;" data-hover-state="VIEW">
+          <div class="project-left-content">
+            <div>
+              <div class="project-meta-pills">
+                <span class="pill-kicker" style="color: #22d3ee; border-color: rgba(6,182,212,0.3); background: rgba(6,182,212,0.08);">02 • Global Edge 🌍</span>
+                <span class="pill-subdomain">snap.clubme.in ↗</span>
+              </div>
+              <h3 class="project-title">EdgeShort & QR</h3>
+              <p class="project-desc">
+                Sub-millisecond link redirection and vector QR architect. Built on distributed Cloudflare edge workers with zero tracker scripts, zero cookie consent barriers, and instantaneous propagation.
+              </p>
+            </div>
+
+            <div class="project-actions">
+              <a href="https://snap.clubme.in" target="_blank" class="btn-launch-tool">
+                <span>Launch Utility</span>
+                <span>↗</span>
+              </a>
+              <a href="https://github.com/dev998889" target="_blank" class="btn-git-target">
+                <span>dev998889/snap-url ↗</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="project-right-visual">
+            <div class="visual-top-bar">
+              <span>EDGE_PROPAGATION</span>
+              <span style="color: #22d3ee;">&lt; 14MS</span>
+            </div>
+            <div>
+              <div style="color: #666666; font-size: 11px;">ROUTED VIA</div>
+              <div class="visual-metric-big" style="color: #22d3ee;">320+ POPS</div>
+              <div style="color: #888888; font-size: 11.5px;">SNAP.CLUBME.IN/XYZ</div>
+            </div>
+            <div class="visual-tags">
+              <span class="visual-tag">Vector QR</span>
+              <span class="visual-tag">Edge Worker</span>
+              <span class="visual-tag">Privacy Native</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 03: RegexForge -->
+        <article class="project-card" style="--card-accent: #c084fc;" data-hover-state="VIEW">
+          <div class="project-left-content">
+            <div>
+              <div class="project-meta-pills">
+                <span class="pill-kicker" style="color: #c084fc; border-color: rgba(192,132,252,0.3); background: rgba(192,132,252,0.08);">03 • Developer Suite ⚡</span>
+                <span class="pill-subdomain">regex.clubme.in ↗</span>
+              </div>
+              <h3 class="project-title">RegexForge AST</h3>
+              <p class="project-desc">
+                Deterministic finite automaton (DFA) regular expression debugger. Breaks down cryptic expressions into human-readable syntax trees with polyglot code exports for Python, Go, and TypeScript.
+              </p>
+            </div>
+
+            <div class="project-actions">
+              <a href="https://regex.clubme.in" target="_blank" class="btn-launch-tool">
+                <span>Launch Utility</span>
+                <span>↗</span>
+              </a>
+              <a href="https://github.com/dev998889" target="_blank" class="btn-git-target">
+                <span>dev998889/regex-forge ↗</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="project-right-visual">
+            <div class="visual-top-bar">
+              <span>AST_PARSER</span>
+              <span style="color: #c084fc;">VALIDATED</span>
+            </div>
+            <div>
+              <div style="color: #666666; font-size: 11px;">MATCH ENGINE</div>
+              <div style="font-size: 15px; color: #ffffff; margin: 10px 0; word-break: break-all;">
+                ^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$
+              </div>
+            </div>
+            <div class="visual-tags">
+              <span class="visual-tag">Polyglot Gen</span>
+              <span class="visual-tag">AST Tree</span>
+              <span class="visual-tag">Zero Lag</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 04: TaxPulse 2026 -->
+        <article class="project-card" style="--card-accent: #10b981;" data-hover-state="VIEW">
+          <div class="project-left-content">
+            <div>
+              <div class="project-meta-pills">
+                <span class="pill-kicker" style="color: #34d399; border-color: rgba(52,211,153,0.3); background: rgba(52,211,153,0.08);">04 • India Fiscal 🇮🇳</span>
+                <span class="pill-subdomain">tax.clubme.in ↗</span>
+              </div>
+              <h3 class="project-title">TaxPulse FY26</h3>
+              <p class="project-desc">
+                Side-by-side New vs Old Tax Regime comparator with automated Section 87A rebate calculation, 80C/80D slabs, and 44ADA presumptive taxation optimizer for Indian software professionals.
+              </p>
+            </div>
+
+            <div class="project-actions">
+              <a href="https://tax.clubme.in" target="_blank" class="btn-launch-tool">
+                <span>Launch Utility</span>
+                <span>↗</span>
+              </a>
+              <a href="https://github.com/dev998889" target="_blank" class="btn-git-target">
+                <span>dev998889/tax-pulse ↗</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="project-right-visual">
+            <div class="visual-top-bar">
+              <span>REGIME_ARBITRAGE</span>
+              <span style="color: #34d399;">SAVE ₹ 42,500</span>
+            </div>
+            <div>
+              <div style="color: #666666; font-size: 11px;">RECOMMENDED REGIME</div>
+              <div class="visual-metric-big" style="color: #34d399;">NEW REGIME</div>
+              <div style="color: #888888; font-size: 11.5px;">FY 2026-27 COMPLIANT</div>
+            </div>
+            <div class="visual-tags">
+              <span class="visual-tag">Presumptive 44ADA</span>
+              <span class="visual-tag">Export PDF</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Right Side Vertical Paging Index -->
+      <aside class="vertical-timeline">
+        <div class="timeline-item active">01</div>
+        <div class="timeline-item">02</div>
+        <div class="timeline-item">03</div>
+        <div class="timeline-item">04</div>
+      </aside>
+
+    </div>
+
+  </section>
+
+  <!-- 5. Kinetic Hover Text (The 4 Invariants) -->
+  <section class="section-kinetic">
+    <div class="kinetic-header">
+      <div style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px;">
+        [ Engineering Invariants ]
+      </div>
+      <h3 style="font-family: var(--font-display); font-size: 38px; font-weight: 800; text-transform: uppercase;">
+        Les 4 Règles Inviolables
+      </h3>
+    </div>
+
+    <div class="kinetic-list">
+      
+      <div class="kinetic-row" data-hover-state="RULE">
+        <div class="kinetic-title-box">
+          <span class="kinetic-num">01</span>
+          <span class="kinetic-text">Zero Recurring Cloud Costs</span>
+        </div>
+        <span class="kinetic-desc-sub">No monthly server bills, forever.</span>
+      </div>
+
+      <div class="kinetic-row" data-hover-state="RULE">
+        <div class="kinetic-title-box">
+          <span class="kinetic-num">02</span>
+          <span class="kinetic-text">Atomic Crash Resilience</span>
+        </div>
+        <span class="kinetic-desc-sub">No broken code ever deploys on mid-cycle crash.</span>
+      </div>
+
+      <div class="kinetic-row" data-hover-state="RULE">
+        <div class="kinetic-title-box">
+          <span class="kinetic-num">03</span>
+          <span class="kinetic-text">Dedicated Isolated Git</span>
+        </div>
+        <span class="kinetic-desc-sub">Pushed strictly to github.com/dev998889.</span>
+      </div>
+
+      <div class="kinetic-row" data-hover-state="RULE">
+        <div class="kinetic-title-box">
+          <span class="kinetic-num">04</span>
+          <span class="kinetic-text">Haute Précision Execution</span>
+        </div>
+        <span class="kinetic-desc-sub">Zero AI slop. Human craft and instant utility.</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6. Live Autonomous Terminal -->
+  <section class="section-console">
+    <div class="console-box">
+      <div class="console-header">
+        <span>ClubMe Engine Daemon • Surveillance Système</span>
+        <span class="c-highlight">● Armé (09:00 — 02:00 IST)</span>
+      </div>
+
+      <div class="console-logs">
+        <div class="c-line">
+          <span class="c-num">01</span>
+          <span>power_guard.inspect():</span>
+          <span class="c-ok">AC_MAINS_CONNECTED (100% Battery OK)</span>
+        </div>
+        <div class="c-line">
+          <span class="c-num">02</span>
+          <span>daily_lock.verify():</span>
+          <span class="c-highlight">LOCKED (Current IST cycle recorded in completed_today.txt)</span>
+        </div>
+        <div class="c-line">
+          <span class="c-num">03</span>
+          <span>cloudflare_routing.status():</span>
+          <span class="c-ok">*.clubme.in CNAME ➜ cname.vercel-dns.com (ACTIVE)</span>
+        </div>
+        <div class="c-line">
+          <span class="c-num">04</span>
+          <span>git_remote.target():</span>
+          <span class="c-ok">https://github.com/dev998889 (TARGET ISOLATED)</span>
+        </div>
+        <div class="c-line">
+          <span class="c-num">05</span>
+          <span>telegram_bot.listener():</span>
+          <span class="c-ok">@my_dailysaas_alert_bot (READY TO BROADCAST)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Bottom Massive Footer with Spinning Sunburst & Monumental Wordmark -->
+  <section class="section-bottom">
+    
+    <div class="bottom-cta-inner">
+      <div>
+        <h2 class="bottom-headline">
+          Follow the daily <em>dispatch.</em>
+        </h2>
+        <p class="bottom-sub">
+          Receive a direct alert on Telegram every time an autonomous micro-SaaS is deployed, complete with architectural notes, direct subdomain URL, and marketing hooks.
+        </p>
+
+        <a href="https://t.me/my_dailysaas_alert_bot" target="_blank" class="btn-massive-black">
+          <span>Connect to @my_dailysaas_alert_bot</span>
+          <span>→</span>
+        </a>
+      </div>
+
+      <div class="bottom-right-station">
+        <!-- 12-Arm Sunburst Asterisk -->
+        <svg class="spin-star-green" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 0V100M0 50H100M14.64 14.64L85.36 85.36M14.64 85.36L85.36 14.64M5.8 25L94.2 75M5.8 75L94.2 25M25 5.8L75 94.2M25 94.2L75 5.8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+        </svg>
+
+        <div class="bottom-contact-links">
+          <div><a href="https://github.com/dev998889" target="_blank">GitHub: @dev998889 ↗</a></div>
+          <div><a href="https://t.me/my_dailysaas_alert_bot" target="_blank">Telegram: Alert Bot ↗</a></div>
+          <div><a href="mailto:contact@clubme.in">Desk: contact@clubme.in</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Giant Monumental Wordmark Clipped at Bottom (like OWNITT) -->
+    <div class="giant-monument-footer">
+      CLUBME
+    </div>
+
+  </section>
+
+  <!-- Interactive Smooth Physics Script -->
+  <script>
+    // Smooth Magnetic Cursor Physics (Exact ownitt style)
+    const dot = document.getElementById('cursor-dot');
+    const follower = document.getElementById('cursor-follower');
+    
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let followerX = mouseX;
+    let followerY = mouseY;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+    });
+
+    // Buttery smooth lerp animation loop for follower
+    function animateCursor() {
+      followerX += (mouseX - followerX) * 0.15;
+      followerY += (mouseY - followerY) * 0.15;
+      follower.style.transform = `translate(${followerX}px, ${followerY}px) translate(-50%, -50%)`;
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    // Hover context handling
+    document.querySelectorAll('a, button, [data-hover-state]').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        const state = el.getAttribute('data-hover-state');
+        if (state === 'VIEW') {
+          follower.textContent = 'VIEW';
+          follower.classList.add('show-view');
+        } else if (state === 'RULE') {
+          follower.textContent = 'RULE';
+          follower.classList.add('show-view');
+        } else {
+          dot.classList.add('active-hover');
+        }
+      });
+
+      el.addEventListener('mouseleave', () => {
+        follower.textContent = '';
+        follower.classList.remove('show-view');
+        dot.classList.remove('active-hover');
+      });
+    });
+
+    // Theme flip detection for header (Cream section trigger)
+    const header = document.getElementById('site-header');
+    const creamSection = document.getElementById('cream-section');
+
+    window.addEventListener('scroll', () => {
+      const rect = creamSection.getBoundingClientRect();
+      if (rect.top <= 60 && rect.bottom >= 60) {
+        header.classList.add('theme-cream');
+      } else {
+        header.classList.remove('theme-cream');
+      }
+    });
+  </script>
 
 </body>
 </html>
