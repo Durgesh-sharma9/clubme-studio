@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO & Brand Metadata -->
+  <title>ClubMe Studio — Autonomous Venture Studio Shipping 1 AI Micro-SaaS Daily</title>
+  <meta name="title" content="ClubMe Studio — Autonomous Venture Studio Shipping 1 AI Micro-SaaS Daily" />
+  <meta name="description" content="ClubMe Studio is an autonomous venture lab founded by Dev Sharma. We scout trending problems and engineer high-utility, 100% free full-stack micro-tools every single day. Zero server cost. Zero friction." />
+  <meta name="keywords" content="ClubMe Studio, Dev Sharma, micro saas, ai tools, daily saas, free developer tools, generative ai utilities, cloudflare workers, vercel edge, open source software, india tech builder" />
+  <meta name="author" content="Dev Sharma" />
+  <meta name="theme-color" content="#0B0F17" />
+
+  <!-- OpenGraph & Social Previews -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://clubme.in/" />
+  <meta property="og:title" content="ClubMe Studio — 1 New AI Micro-SaaS Shipped Every Day" />
+  <meta property="og:description" content="Explore free, production-grade micro utilities built autonomously every 24 hours. No signups, no credit cards." />
+  <meta property="og:image" content="https://clubme.in/og-image.png" />
+
+  <!-- Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS & Lucide Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            darkBg: '#080B11',
+            cardBg: '#0F1523',
+            cardBorder: '#1E293B',
+            brandCyan: '#06B6D4',
+            brandPurple: '#8B5CF6',
+            brandEmerald: '#10B981',
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'gradient': 'gradient 8s ease infinite',
+          },
+          keyframes: {
+            gradient: {
+              '0%, 100%': { backgroundPosition: '0% 50%' },
+              '50%': { backgroundPosition: '100% 50%' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #080B11;
+      color: #F1F5F9;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .mesh-gradient {
+      background: radial-gradient(circle at 50% -20%, rgba(14, 165, 233, 0.18), transparent 70%),
+                  radial-gradient(circle at 10% 40%, rgba(139, 92, 246, 0.12), transparent 60%),
+                  radial-gradient(circle at 90% 70%, rgba(16, 185, 129, 0.1), transparent 60%);
+    }
+    .glass-card {
+      background: rgba(15, 21, 35, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-card:hover {
+      border-color: rgba(6, 182, 212, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px -10px rgba(6, 182, 212, 0.2);
+    }
+    .badge-glow {
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+    }
+  </style>
+</head>
+<body class="mesh-gradient min-h-screen flex flex-col selection:bg-brandCyan selection:text-black">
+
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-50 backdrop-blur-xl bg-darkBg/80 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brandCyan via-brandPurple to-brandEmerald p-0.5 shadow-lg shadow-brandCyan/20 group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-darkBg rounded-[10px] flex items-center justify-center">
+            <span class="text-xl font-black bg-gradient-to-r from-brandCyan to-brandPurple bg-clip-text text-transparent">C</span>
+          </div>
+        </div>
+        <div>
+          <span class="text-xl font-bold tracking-tight text-white flex items-center gap-1.5">
+            ClubMe <span class="text-xs px-2 py-0.5 rounded-full bg-brandCyan/10 border border-brandCyan/30 text-brandCyan font-mono uppercase tracking-wider">Studio</span>
+          </span>
+          <span class="text-[11px] text-slate-400 block -mt-0.5 tracking-wide">Autonomous SaaS Venture Lab</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links & Status -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#drops" class="hover:text-brandCyan transition-colors">Daily Drops</a>
+        <a href="#engine" class="hover:text-brandCyan transition-colors">How It Ships</a>
+        <a href="#directory" class="hover:text-brandCyan transition-colors">All Micro-SaaS</a>
+        <a href="https://devv.in" target="_blank" class="hover:text-white transition-colors flex items-center gap-1">
+          Founder <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-500"></i>
+        </a>
+      </nav>
+
+      <!-- Telegram Action Button -->
+      <div class="flex items-center gap-3">
+        <a href="https://t.me/my_dailysaas_alert_bot" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-semibold text-xs tracking-wide shadow-lg shadow-cyan-500/25 transition-all hover:scale-105">
+          <i data-lucide="send" class="w-4 h-4 fill-black"></i>
+          <span>Telegram VIP Dispatch</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="flex-grow">
+    <section class="relative pt-20 pb-16 md:pt-28 md:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+      
+      <!-- Live Status Pill -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono font-medium mb-8 badge-glow">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span>DEPLOYING 1 MICRO-SAAS EVERY 24 HOURS</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight max-w-4xl mx-auto leading-[1.1]">
+        The Autonomous <br class="hidden sm:inline" />
+        <span class="bg-gradient-to-r from-brandCyan via-brandPurple to-brandEmerald bg-clip-text text-transparent">
+          Venture Studio.
+        </span>
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="mt-6 text-base sm:text-xl text-slate-400 max-w-2xl mx-auto font-normal leading-relaxed">
+        We scan trending internet pain points, code full-stack micro-products, and deploy them into the wild daily. 
+        <strong class="text-slate-200">100% Free. Zero-server friction. Built to scale.</strong>
+      </p>
+
+      <!-- Metrics Ribbon -->
+      <div class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
+        <div class="glass-card p-4 rounded-2xl">
+          <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono" id="toolsCount">03+</div>
+          <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Tools Shipped</div>
+        </div>
+        <div class="glass-card p-4 rounded-2xl">
+          <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono">100%</div>
+          <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Free Forever</div>
+        </div>
+        <div class="glass-card p-4 rounded-2xl">
+          <div class="text-2xl sm:text-3xl font-extrabold text-brandCyan font-mono">₹0</div>
+          <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Server Bills</div>
+        </div>
+        <div class="glass-card p-4 rounded-2xl">
+          <div class="text-2xl sm:text-3xl font-extrabold text-brandPurple font-mono">Edge</div>
+          <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Cloudflare & Vercel</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Today's Drop Spotlight Section -->
+    <section id="drops" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-2">
+            <i data-lucide="flame" class="w-6 h-6 text-amber-400 fill-amber-400"></i>
+            Today's Featured Drop
+          </h2>
+          <p class="text-sm text-slate-400 mt-1">The latest micro-utility engineered and shipped today.</p>
+        </div>
+        <span class="text-xs font-mono px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-slate-300">
+          Drop #003
+        </span>
+      </div>
+
+      <!-- Spotlight Card -->
+      <div class="glass-card p-6 sm:p-10 rounded-3xl relative overflow-hidden border border-brandCyan/30 bg-gradient-to-br from-cardBg via-darkBg to-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-72 h-72 bg-brandCyan/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 space-y-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-brandCyan/10 text-brandCyan text-xs font-mono font-semibold">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+              AI IMAGE MATTING ENGINE
+            </div>
+            <h3 class="text-3xl sm:text-4xl font-extrabold text-white">
+              Cuto BG Remover
+            </h3>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Ultra-precision AI background removal executing 100% client-side via WebAssembly SIMD. 
+              Zero cloud uploads, unlimited 4K HD transparent PNG exports, and zero watermarks.
+            </p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="text-xs px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/5">⚡ WebAssembly Wasm</span>
+              <span class="text-xs px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/5">🔒 100% On-Device Privacy</span>
+              <span class="text-xs px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/5">💎 4K UHD Output</span>
+            </div>
+            <div class="pt-4 flex flex-wrap items-center gap-4">
+              <a href="https://cuto.devv.in" target="_blank" class="px-6 py-3 rounded-xl bg-gradient-to-r from-brandCyan to-brandPurple text-black font-bold text-sm flex items-center gap-2 hover:opacity-90 transition-opacity">
+                <span>Launch Live Tool</span>
+                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+              </a>
+              <a href="https://github.com/dev998889/bg-remover" target="_blank" class="px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-slate-200 border border-white/10 font-medium text-sm flex items-center gap-2 transition-all">
+                <i data-lucide="github" class="w-4 h-4"></i>
+                <span>View Source</span>
+              </a>
+            </div>
+          </div>
+          <div class="lg:col-span-5 bg-black/40 border border-white/10 rounded-2xl p-6 relative">
+            <div class="flex items-center justify-between pb-4 border-b border-white/10 text-xs font-mono text-slate-400">
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span> Live on Edge</span>
+              <span>cuto.devv.in</span>
+            </div>
+            <div class="py-8 text-center space-y-3">
+              <div class="w-16 h-16 mx-auto rounded-2xl bg-brandCyan/10 border border-brandCyan/30 flex items-center justify-center text-brandCyan">
+                <i data-lucide="scissors" class="w-8 h-8"></i>
+              </div>
+              <h4 class="text-white font-semibold">Ready to Use in 3 Seconds</h4>
+              <p class="text-xs text-slate-400 max-w-xs mx-auto">Drag and drop any photo to generate ultra-sharp cutouts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Directory Grid Section -->
+    <section id="directory" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white">The Micro-SaaS Vault</h2>
+          <p class="text-sm text-slate-400 mt-1">Explore all tools shipped by ClubMe Studio.</p>
+        </div>
+
+        <!-- Category Filter Pills -->
+        <div class="flex flex-wrap gap-2">
+          <button onclick="filterCategory('all')" class="cat-btn active px-3.5 py-1.5 rounded-lg text-xs font-medium bg-brandCyan text-black transition-all">All Drops</button>
+          <button onclick="filterCategory('ai')" class="cat-btn px-3.5 py-1.5 rounded-lg text-xs font-medium bg-white/5 hover:bg-white/10 text-slate-300 border border-white/5 transition-all">AI & Vision</button>
+          <button onclick="filterCategory('developer')" class="cat-btn px-3.5 py-1.5 rounded-lg text-xs font-medium bg-white/5 hover:bg-white/10 text-slate-300 border border-white/5 transition-all">Developer Tools</button>
+          <button onclick="filterCategory('utility')" class="cat-btn px-3.5 py-1.5 rounded-lg text-xs font-medium bg-white/5 hover:bg-white/10 text-slate-300 border border-white/5 transition-all">Utilities</button>
+        </div>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="toolsGrid">
+        
+        <!-- Tool 1 -->
+        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between" data-category="ai">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-brandCyan/10 text-brandCyan border border-brandCyan/20">AI & Vision</span>
+              <span class="text-xs text-slate-500 font-mono">v1.2</span>
+            </div>
+            <h4 class="text-xl font-bold text-white">Cuto BG Remover</h4>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+              Instant AI background eraser with zero cloud uploads and full 4K PNG downloads.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+            <a href="https://cuto.devv.in" target="_blank" class="text-xs font-semibold text-brandCyan hover:underline flex items-center gap-1">
+              Launch Tool <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+            <span class="text-[11px] text-emerald-400 font-mono">● Operational</span>
+          </div>
+        </div>
+
+        <!-- Tool 2 -->
+        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between" data-category="ai">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-brandPurple/10 text-brandPurple border border-brandPurple/20">AI & Vision</span>
+              <span class="text-xs text-slate-500 font-mono">v1.0</span>
+            </div>
+            <h4 class="text-xl font-bold text-white">Cuto AI Enhancer</h4>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+              In-browser neural image enhancer and 4K upscaler powered by client-side WebGL models.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+            <a href="https://enhance.devv.in" target="_blank" class="text-xs font-semibold text-brandPurple hover:underline flex items-center gap-1">
+              Launch Tool <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+            <span class="text-[11px] text-emerald-400 font-mono">● Operational</span>
+          </div>
+        </div>
+
+        <!-- Tool 3 -->
+        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between" data-category="developer">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Developer</span>
+              <span class="text-xs text-slate-500 font-mono">Upcoming Drop</span>
+            </div>
+            <h4 class="text-xl font-bold text-white">FastMock API Studio</h4>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+              Design mock REST schemas visually and get permanent live JSON endpoints in 5 seconds.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-400">Deploying in next cycle</span>
+            <span class="text-[11px] text-amber-400 font-mono">⏳ In Queue</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- How the Studio Operates -->
+    <section id="engine" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white">How ClubMe Studio Ships Daily</h2>
+        <p class="text-sm text-slate-400 mt-3">An autonomous 4-stage pipeline that never sleeps.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="glass-card p-6 rounded-2xl">
+          <div class="text-brandCyan font-mono text-sm font-bold">01 / SCOUT</div>
+          <h4 class="text-lg font-bold text-white mt-2">Trend Intelligence</h4>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Scrapes ProductHunt, GitHub trending, and Reddit communities for viral micro-utility pain points.
+          </p>
+        </div>
+        <div class="glass-card p-6 rounded-2xl">
+          <div class="text-brandPurple font-mono text-sm font-bold">02 / FORGE</div>
+          <h4 class="text-lg font-bold text-white mt-2">Full-Stack Engine</h4>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Autonomous agent engineers clean React frontend, serverless API logic, and zero-cost persistence.
+          </p>
+        </div>
+        <div class="glass-card p-6 rounded-2xl">
+          <div class="text-brandEmerald font-mono text-sm font-bold">03 / SHIP</div>
+          <h4 class="text-lg font-bold text-white mt-2">Global Edge Live</h4>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Auto-pushes to GitHub, triggers Vercel/Cloudflare build, and attaches custom *.clubme.in subdomain.
+          </p>
+        </div>
+        <div class="glass-card p-6 rounded-2xl">
+          <div class="text-amber-400 font-mono text-sm font-bold">04 / DISPATCH</div>
+          <h4 class="text-lg font-bold text-white mt-2">Instant Broadcast</h4>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Sends live launch alerts and marketing copy directly to the founder's Telegram bot.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Telegram VIP CTA -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      <div class="glass-card p-8 sm:p-12 rounded-3xl text-center relative overflow-hidden bg-gradient-to-r from-cyan-950/40 via-cardBg to-purple-950/40 border-brandCyan/20">
+        <div class="w-14 h-14 mx-auto rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-6">
+          <i data-lucide="bell" class="w-7 h-7"></i>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Get Tomorrow's Drop Before Anyone Else</h2>
+        <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mt-3">
+          Join our Telegram Dispatch Bot to receive instant alerts the second a new micro-SaaS is deployed live.
+        </p>
+        <div class="mt-8 flex justify-center">
+          <a href="https://t.me/my_dailysaas_alert_bot" target="_blank" class="px-8 py-4 rounded-xl bg-gradient-to-r from-brandCyan to-brandPurple text-black font-extrabold text-sm tracking-wide shadow-xl shadow-cyan-500/20 hover:scale-105 transition-transform flex items-center gap-2">
+            <i data-lucide="send" class="w-5 h-5 fill-black"></i>
+            <span>Join @my_dailysaas_alert_bot</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/5 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-400">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-white">ClubMe Studio</span>
+        <span>•</span>
+        <span>Engineered with passion by <a href="https://devv.in" target="_blank" class="text-brandCyan font-semibold hover:underline">Dev Sharma</a></span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="https://github.com/dev998889" target="_blank" class="hover:text-white transition-colors flex items-center gap-1">
+          <i data-lucide="github" class="w-4 h-4"></i> GitHub
+        </a>
+        <a href="https://t.me/my_dailysaas_alert_bot" target="_blank" class="hover:text-white transition-colors flex items-center gap-1">
+          <i data-lucide="send" class="w-4 h-4"></i> Telegram
+        </a>
+        <a href="https://devv.in" target="_blank" class="hover:text-white transition-colors flex items-center gap-1">
+          <i data-lucide="globe" class="w-4 h-4"></i> Portfolio
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts: Lucide Icons & Category Filtering -->
+  <script>
+    lucide.createIcons();
+
+    function filterCategory(cat) {
+      const cards = document.querySelectorAll('#toolsGrid > div');
+      const buttons = document.querySelectorAll('.cat-btn');
+
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-brandCyan', 'text-black');
+        btn.classList.add('bg-white/5', 'text-slate-300');
+      });
+      event.target.classList.remove('bg-white/5', 'text-slate-300');
+      event.target.classList.add('bg-brandCyan', 'text-black');
+
+      cards.forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-category') === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
