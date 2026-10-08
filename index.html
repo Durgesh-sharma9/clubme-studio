@@ -12,16 +12,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
+  <!-- Local Animation Libraries (Lenis Smooth Scroll + GSAP ScrollTrigger) -->
+  <script src="js/lenis.min.js"></script>
+  <script src="js/gsap.min.js"></script>
+  <script src="js/ScrollTrigger.min.js"></script>
+
   <style>
     /* ==========================================================================
-       OWNITT.FR EXACT DESIGN SYSTEM & ANIMATION SUITE
-       - Fullscreen Intro with scaling logo transition
-       - Custom Magnetic Follower Cursor (Dot + Ring with 'SCROLL' / 'VOIR')
-       - Deep Velvet Black (#000000) ⇄ Warm Ivory Cream (#f6f4ee)
-       - Neon Electric Lime Accent (#d4ff00)
-       - Kinetic Outline Hover Marquee
-       - Pinned Projects Deck with Vertical Step Counter (01 to 08)
-       - Monumental Clipped Footer Wordmark
+       OWNITT.FR EXACT INTERACTION & ANIMATION ENGINE
+       - Lenis Momentum Smooth Scroll
+       - Fullscreen Intro Morph to Header Logo on Scroll / Click
+       - Sticky Stacking Cards with Scale-Down Parallax (01 to 06)
+       - Text Mask Line Reveals on Scroll
+       - Dual Theme Morph (#000000 ⇄ #f6f4ee)
+       - Cursor with 'SCROLL' and 'VOIR' Magnetic Follower
        ========================================================================== */
 
     :root {
@@ -29,7 +33,7 @@
       --text: #ffffff;
       --cream: #f6f4ee;
       --cream-card: #ece8df;
-      --dark-card: #0a0b0d;
+      --dark-card: #0c0d10;
       --acid: #d4ff00;          /* Ownitt signature electric lime */
       --acid-glow: rgba(212, 255, 0, 0.35);
       
@@ -49,9 +53,25 @@
     }
 
     html {
-      scroll-behavior: smooth;
       background-color: var(--bg);
       color: var(--text);
+    }
+
+    /* Lenis Smooth Scroll Recommended Setup */
+    html.lenis, html.lenis body {
+      height: auto;
+    }
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+    .lenis.lenis-scrolling iframe {
+      pointer-events: none;
     }
 
     body {
@@ -63,14 +83,14 @@
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
       min-height: 100vh;
-      cursor: none; /* Replaced by custom magnetic cursor */
+      cursor: none; /* Controlled by magnetic cursor */
     }
 
     a, button {
       cursor: none;
     }
 
-    /* 1. Custom Magnetic Cursor */
+    /* 1. Custom Magnetic Follower Cursor */
     .cursor-dot {
       position: fixed;
       top: 0;
@@ -90,8 +110,8 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 48px;
-      height: 48px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       border: 1px solid rgba(255, 255, 255, 0.45);
       pointer-events: none;
@@ -111,29 +131,29 @@
     }
 
     .cursor-dot.hovered {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       background: var(--acid);
       mix-blend-mode: normal;
     }
 
     .cursor-ring.mode-scroll {
-      width: 72px;
-      height: 72px;
-      border-color: rgba(255, 255, 255, 0.8);
+      width: 74px;
+      height: 74px;
+      border-color: rgba(255, 255, 255, 0.7);
       background: rgba(255, 255, 255, 0.08);
     }
 
     .cursor-ring.mode-view {
-      width: 80px;
-      height: 80px;
+      width: 84px;
+      height: 84px;
       background: var(--acid);
       color: #000000;
       border-color: var(--acid);
       mix-blend-mode: normal;
     }
 
-    /* Fixed Awwwards Badge on Right Edge ('W.' badge) */
+    /* Fixed Awwwards 'W.' Badge on Right Screen Edge */
     .awwwards-badge {
       position: fixed;
       right: 0;
@@ -161,7 +181,7 @@
       background: var(--acid);
     }
 
-    /* 2. FULLSCREEN INTRO OVERLAY (Matches 00:00 of video) */
+    /* 2. FULLSCREEN INTRO OVERLAY (Matches 00:00 - 00:01 of the Video) */
     .intro-overlay {
       position: fixed;
       top: 0;
@@ -174,19 +194,20 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.7s;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease, visibility 0.8s;
     }
 
     .intro-overlay.dismissed {
+      transform: translateY(-100%);
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-      transform: translateY(-30px);
     }
 
-    .intro-logo-box {
+    .intro-center-box {
       text-align: center;
-      transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      transform-origin: center center;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .intro-wordmark {
@@ -291,7 +312,6 @@
       width: 18px;
       height: 1.5px;
       background: currentColor;
-      transition: background-color 0.2s ease;
     }
 
     .btn-header-menu:hover {
@@ -301,7 +321,7 @@
       transform: scale(1.06);
     }
 
-    /* 4. HERO SECTION (AsteriskHero) */
+    /* 4. HERO SECTION (AsteriskHero - Video 00:02 - 00:05) */
     .hero-section {
       min-height: 100vh;
       display: flex;
@@ -352,14 +372,14 @@
 
     .hero-photo-img {
       width: 100%;
-      height: 100%;
+      height: 115%;
       object-fit: cover;
       filter: grayscale(100%) contrast(125%) brightness(95%);
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+      transition: filter 0.6s ease;
+      will-change: transform;
     }
 
     .hero-photo-wrap:hover .hero-photo-img {
-      transform: scale(1.04);
       filter: grayscale(70%) contrast(130%) brightness(100%);
     }
 
@@ -426,7 +446,7 @@
       color: var(--acid);
     }
 
-    /* 6. SHOWREEL SECTION (WARM IVORY CREAM THEME FLIP #f6f4ee) */
+    /* 6. SHOWREEL SECTION (WARM IVORY CREAM FLIP #f6f4ee) */
     .section-cream {
       background: var(--cream);
       color: #000000;
@@ -458,7 +478,7 @@
       text-transform: none;
     }
 
-    /* Center black interactive showreel card with spinning flower */
+    /* Center black card with spinning asterisk */
     .cream-video-card {
       background: #000000;
       color: #ffffff;
@@ -491,21 +511,15 @@
       text-align: center;
     }
 
-    /* Rotating 12-Arm Sunburst Asterisk */
     .spinning-asterisk {
       width: 110px;
       height: 110px;
-      animation: spinAsterisk 16s linear infinite;
       color: var(--acid);
       margin-bottom: 16px;
+      will-change: transform;
     }
 
-    @keyframes spinAsterisk {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    /* 7. MANIFESTO QUOTES (The Green Punchlines on Deep Black) */
+    /* 7. MANIFESTO QUOTES (The Green Punchlines with Line Mask Animations) */
     .section-manifesto {
       background: #000000;
       padding: 150px 44px;
@@ -525,6 +539,7 @@
       border-left: 2px solid rgba(255, 255, 255, 0.2);
       padding-left: 40px;
       transition: border-color 0.3s ease;
+      overflow: hidden;
     }
 
     .manifesto-block:hover {
@@ -540,6 +555,8 @@
       line-height: 1.1;
       color: #ffffff;
       margin-bottom: 14px;
+      transform: translateY(0);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
     }
 
     .manifesto-serif-green {
@@ -548,6 +565,8 @@
       font-style: italic;
       color: var(--acid);
       line-height: 1.15;
+      transform: translateY(0);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
     }
 
     /* 8. DEFINITION & QUESTION SCENE */
@@ -614,10 +633,11 @@
       color: var(--acid);
     }
 
-    /* 9. PINNED PROJECTS SHOWCASE DECK (01 to 08) */
+    /* 9. PINNED STACKING PROJECTS SHOWCASE DECK (Video 00:20 - 00:29) */
     .section-projects {
       background: #000000;
-      padding: 120px 44px 160px;
+      padding: 120px 44px 180px;
+      position: relative;
     }
 
     .projects-header-bar {
@@ -648,16 +668,18 @@
       display: grid;
       grid-template-columns: 1fr 100px;
       gap: 40px;
+      position: relative;
     }
 
+    /* Stacking Cards Column */
     .cards-deck-column {
-      display: flex;
-      flex-direction: column;
-      gap: 44px;
+      position: relative;
     }
 
-    /* The Project Card */
+    /* The Project Card (Sticky Stack Architecture) */
     .proj-card {
+      position: sticky;
+      top: 120px;
       background: var(--dark-card);
       border: 1px solid var(--border-dark);
       border-radius: 22px;
@@ -666,15 +688,14 @@
       grid-template-columns: 1.25fr 1fr;
       align-items: center;
       gap: 40px;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-      overflow: hidden;
+      margin-bottom: 80px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+      transition: transform 0.4s ease, opacity 0.4s ease, border-color 0.3s ease;
+      will-change: transform, opacity;
     }
 
     .proj-card:hover {
       border-color: rgba(255, 255, 255, 0.35);
-      transform: translateY(-4px);
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85);
     }
 
     .proj-card::before {
@@ -744,13 +765,15 @@
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.08);
       background: #000000;
+      position: relative;
     }
 
     .proj-photo-img {
       width: 100%;
-      height: 100%;
+      height: 115%;
       object-fit: cover;
       transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
     }
 
     .proj-card:hover .proj-photo-img {
@@ -767,7 +790,11 @@
       gap: 20px;
       font-family: var(--font-mono);
       font-size: 14px;
-      color: #333333;
+      color: #444444;
+    }
+
+    .time-node {
+      transition: color 0.25s ease, font-weight 0.25s ease;
     }
 
     .time-node.active {
@@ -971,8 +998,8 @@
       width: 90px;
       height: 90px;
       color: #000000;
-      animation: spinAsterisk 14s linear infinite;
       margin-bottom: 20px;
+      will-change: transform;
     }
 
     .footer-social-links {
@@ -1042,7 +1069,7 @@
 
   <!-- 2. FULLSCREEN INTRO OVERLAY (Matches 00:00 - 00:01 of the Video) -->
   <div class="intro-overlay" id="intro-overlay">
-    <div class="intro-logo-box">
+    <div class="intro-center-box" id="intro-logo-box">
       <div class="intro-wordmark">ownitt</div>
       <div class="intro-subscript">AGENCE CRÉATIVE</div>
     </div>
@@ -1080,6 +1107,7 @@
           src="https://res.cloudinary.com/dvzsvgucq/image/upload/f_auto,q_auto,w_1600/v1780692135/hero-website-ownitt_ybitlu.webp" 
           alt="Direction Artistique Ownitt" 
           class="hero-photo-img" 
+          id="hero-photo-img"
         />
       </div>
     </div>
@@ -1126,7 +1154,7 @@
         </div>
 
         <div class="cream-card-visual">
-          <svg class="spinning-asterisk" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="spinning-asterisk" id="cream-asterisk" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M50 0V100M0 50H100M14.64 14.64L85.36 85.36M14.64 85.36L85.36 14.64M5.8 25L94.2 75M5.8 75L94.2 25M25 5.8L75 94.2M25 94.2L75 5.8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
           </svg>
           <span style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--acid);">
@@ -1138,7 +1166,7 @@
   </section>
 
   <!-- 7. Manifesto Section with Green Italic Punchlines (Matches 00:10 - 00:16) -->
-  <section class="section-manifesto">
+  <section class="section-manifesto" id="manifesto-section">
     <div class="manifesto-inner">
       
       <div class="manifesto-block">
@@ -1196,7 +1224,7 @@
       <div class="cards-deck-column">
         
         <!-- 01 / Burger King -->
-        <article class="proj-card" style="--card-accent: #ef4444;" data-cursor="VOIR">
+        <article class="proj-card" data-index="01" style="--card-accent: #ef4444;" data-cursor="VOIR">
           <div>
             <div class="proj-kicker">01 / CAS CLIENT • DIRECTION ARTISTIQUE</div>
             <h3 class="proj-name">Burger King</h3>
@@ -1219,7 +1247,7 @@
         </article>
 
         <!-- 02 / Remanence -->
-        <article class="proj-card" style="--card-accent: #f59e0b;" data-cursor="VOIR">
+        <article class="proj-card" data-index="02" style="--card-accent: #f59e0b;" data-cursor="VOIR">
           <div>
             <div class="proj-kicker">02 / CAS CLIENT • STRATÉGIE & IDENTITÉ</div>
             <h3 class="proj-name">Remanence</h3>
@@ -1242,7 +1270,7 @@
         </article>
 
         <!-- 03 / TABAM -->
-        <article class="proj-card" style="--card-accent: #06b6d4;" data-cursor="VOIR">
+        <article class="proj-card" data-index="03" style="--card-accent: #06b6d4;" data-cursor="VOIR">
           <div>
             <div class="proj-kicker">03 / CAS CLIENT • STRATÉGIE & NAMING</div>
             <h3 class="proj-name">TABAM</h3>
@@ -1265,7 +1293,7 @@
         </article>
 
         <!-- 04 / Peugeot Metropolis -->
-        <article class="proj-card" style="--card-accent: #3b82f6;" data-cursor="VOIR">
+        <article class="proj-card" data-index="04" style="--card-accent: #3b82f6;" data-cursor="VOIR">
           <div>
             <div class="proj-kicker">04 / CAS CLIENT • MOTION DESIGN & FILM</div>
             <h3 class="proj-name">Peugeot Metropolis</h3>
@@ -1288,7 +1316,7 @@
         </article>
 
         <!-- 05 / Hyskatebag -->
-        <article class="proj-card" style="--card-accent: #a855f7;" data-cursor="VOIR">
+        <article class="proj-card" data-index="05" style="--card-accent: #a855f7;" data-cursor="VOIR">
           <div>
             <div class="proj-kicker">05 / CAS CLIENT • BRAND CONTENT</div>
             <h3 class="proj-name">Hyskatebag</h3>
@@ -1311,7 +1339,7 @@
         </article>
 
         <!-- 06 / Jean-Baptiste Ancelot -->
-        <article class="proj-card" style="--card-accent: #10b981;" data-cursor="VOIR">
+        <article class="proj-card" data-index="06" style="--card-accent: #10b981;" data-cursor="VOIR">
           <div>
             <div class="proj-kicker">06 / CAS CLIENT • IDENTITÉ VISUELLE</div>
             <h3 class="proj-name">Jean-Baptiste Ancelot</h3>
@@ -1336,13 +1364,13 @@
       </div>
 
       <!-- Right Sticky Timeline -->
-      <aside class="sticky-timeline">
-        <div class="time-node active">01</div>
-        <div class="time-node">02</div>
-        <div class="time-node">03</div>
-        <div class="time-node">04</div>
-        <div class="time-node">05</div>
-        <div class="time-node">06</div>
+      <aside class="sticky-timeline" id="sticky-timeline">
+        <div class="time-node active" data-step="01">01</div>
+        <div class="time-node" data-step="02">02</div>
+        <div class="time-node" data-step="03">03</div>
+        <div class="time-node" data-step="04">04</div>
+        <div class="time-node" data-step="05">05</div>
+        <div class="time-node" data-step="06">06</div>
       </aside>
 
     </div>
@@ -1438,7 +1466,7 @@
       </div>
 
       <div class="footer-right-col">
-        <svg class="footer-spinning-star" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="footer-spinning-star" id="footer-asterisk" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M50 0V100M0 50H100M14.64 14.64L85.36 85.36M14.64 85.36L85.36 14.64M5.8 25L94.2 75M5.8 75L94.2 25M25 5.8L75 94.2M25 94.2L75 5.8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
         </svg>
 
@@ -1457,29 +1485,87 @@
     </div>
   </footer>
 
-  <!-- Scripts: Intro Dismiss Physics + Magnetic Follower Cursor + Theme Shift -->
+  <!-- SCRIPT ENGINE: Lenis Smooth Scroll + GSAP ScrollTrigger + Magnetic Cursor -->
   <script>
-    // 1. Intro Animation Logic (Fullscreen to Header)
+    // =========================================================================
+    // 1. LENIS MOMENTUM SMOOTH SCROLL INITIALIZATION
+    // =========================================================================
+    let lenis = null;
+    if (typeof Lenis !== 'undefined') {
+      lenis = new Lenis({
+        duration: 1.25,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        smoothWheel: true,
+        wheelMultiplier: 1.0
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+
+      if (typeof ScrollTrigger !== 'undefined') {
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => lenis.raf(time * 1000));
+        gsap.ticker.lagSmoothing(0);
+      }
+    }
+
+    // =========================================================================
+    // 2. FULLSCREEN INTRO TO HEADER TRANSITION
+    // =========================================================================
     const introOverlay = document.getElementById('intro-overlay');
     const introSkipBtn = document.getElementById('intro-skip');
+    const introLogoBox = document.getElementById('intro-logo-box');
     let introDismissed = false;
 
     function dismissIntro() {
       if (introDismissed) return;
       introDismissed = true;
-      introOverlay.classList.add('dismissed');
-      ring.classList.add('mode-scroll');
-      ring.textContent = 'SCROLL';
+
+      if (typeof gsap !== 'undefined') {
+        gsap.to(introLogoBox, {
+          scale: 0.18,
+          x: -window.innerWidth * 0.42,
+          y: -window.innerHeight * 0.44,
+          duration: 0.8,
+          ease: "power3.inOut"
+        });
+        gsap.to(introOverlay, {
+          yPercent: -100,
+          duration: 0.85,
+          delay: 0.1,
+          ease: "power3.inOut",
+          onComplete: () => {
+            introOverlay.classList.add('dismissed');
+            ring.classList.add('mode-scroll');
+            ring.textContent = 'SCROLL';
+            if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+          }
+        });
+      } else {
+        introOverlay.classList.add('dismissed');
+        ring.classList.add('mode-scroll');
+        ring.textContent = 'SCROLL';
+      }
     }
 
     introSkipBtn.addEventListener('click', dismissIntro);
     window.addEventListener('wheel', (e) => {
-      if (e.deltaY > 10) dismissIntro();
+      if (e.deltaY > 5 && !introDismissed) dismissIntro();
     }, { passive: true });
-    window.addEventListener('touchmove', dismissIntro, { passive: true });
-    window.addEventListener('keydown', dismissIntro);
+    window.addEventListener('touchmove', () => {
+      if (!introDismissed) dismissIntro();
+    }, { passive: true });
+    window.addEventListener('keydown', () => {
+      if (!introDismissed) dismissIntro();
+    });
 
-    // 2. Custom Magnetic Cursor Physics
+    // =========================================================================
+    // 3. CUSTOM MAGNETIC CURSOR PHYSICS
+    // =========================================================================
     const dot = document.getElementById('cursor-dot');
     const ring = document.getElementById('cursor-ring');
 
@@ -1502,7 +1588,6 @@
     }
     updateCursor();
 
-    // Context Hover Handling
     document.querySelectorAll('[data-cursor]').forEach(el => {
       el.addEventListener('mouseenter', () => {
         const mode = el.getAttribute('data-cursor');
@@ -1524,24 +1609,144 @@
       }
     });
 
-    // 3. Theme Shift on Scroll
-    const siteHeader = document.getElementById('site-header');
-    const creamSections = document.querySelectorAll('.section-cream, .section-definition, .section-clients, .section-footer');
+    // =========================================================================
+    // 4. GSAP SCROLLTRIGGER ANIMATIONS
+    // =========================================================================
+    window.addEventListener('DOMContentLoaded', () => {
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
-    window.addEventListener('scroll', () => {
-      let isOverCream = false;
-      creamSections.forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top <= 60 && rect.bottom >= 60) {
-          isOverCream = true;
+      gsap.registerPlugin(ScrollTrigger);
+
+      // A. Parallax on Hero Image
+      const heroPhoto = document.getElementById('hero-photo-img');
+      if (heroPhoto) {
+        gsap.to(heroPhoto, {
+          yPercent: -15,
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#hero-section",
+            start: "top top",
+            end: "bottom top",
+            scrub: true
+          }
+        });
+      }
+
+      // B. Stacking Project Cards with Scale-Down & Dimming
+      const cards = gsap.utils.toArray('.proj-card');
+      const timeNodes = gsap.utils.toArray('.time-node');
+
+      cards.forEach((card, index) => {
+        if (index < cards.length - 1) {
+          // As subsequent cards scroll over this one, slightly scale it down and dim it
+          gsap.to(card, {
+            scale: 0.93 - (index * 0.01),
+            opacity: 0.35,
+            ease: "none",
+            scrollTrigger: {
+              trigger: cards[index + 1],
+              start: "top 300px",
+              end: "top 120px",
+              scrub: true
+            }
+          });
+        }
+
+        // Active timeline node indicator
+        ScrollTrigger.create({
+          trigger: card,
+          start: "top 250px",
+          end: "bottom 250px",
+          onEnter: () => updateTimeline(index),
+          onEnterBack: () => updateTimeline(index)
+        });
+      });
+
+      function updateTimeline(activeIndex) {
+        timeNodes.forEach((node, idx) => {
+          if (idx === activeIndex) {
+            node.classList.add('active');
+          } else {
+            node.classList.remove('active');
+          }
+        });
+      }
+
+      // C. Parallax Project Mockup Photos
+      document.querySelectorAll('.proj-photo-img').forEach(img => {
+        gsap.to(img, {
+          yPercent: -12,
+          ease: "none",
+          scrollTrigger: {
+            trigger: img.parentElement,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+          }
+        });
+      });
+
+      // D. Manifesto Text Reveals on Scroll
+      document.querySelectorAll('.manifesto-block').forEach(block => {
+        const sans = block.querySelector('.manifesto-sans');
+        const serif = block.querySelector('.manifesto-serif-green');
+
+        gsap.from([sans, serif], {
+          y: 45,
+          opacity: 0.1,
+          duration: 0.9,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: block,
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          }
+        });
+      });
+
+      // E. Continuous + Scroll Velocity Rotation on Asterisks
+      const asterisks = ['#cream-asterisk', '#footer-asterisk'];
+      asterisks.forEach(sel => {
+        const el = document.querySelector(sel);
+        if (el) {
+          // Standard infinite spin
+          gsap.to(el, {
+            rotation: 360,
+            duration: 16,
+            repeat: -1,
+            ease: "none"
+          });
+
+          // Extra spin boost on scroll
+          gsap.to(el, {
+            rotation: "+=720",
+            ease: "none",
+            scrollTrigger: {
+              trigger: "body",
+              start: "top top",
+              end: "bottom bottom",
+              scrub: 1
+            }
+          });
         }
       });
 
-      if (isOverCream) {
-        siteHeader.classList.add('theme-cream');
-      } else {
-        siteHeader.classList.remove('theme-cream');
-      }
+      // F. Smooth Header Theme Flip (Black vs Cream)
+      const siteHeader = document.getElementById('site-header');
+      const creamSections = document.querySelectorAll('.section-cream, .section-definition, .section-clients, .section-footer');
+
+      creamSections.forEach(sec => {
+        ScrollTrigger.create({
+          trigger: sec,
+          start: "top 70px",
+          end: "bottom 70px",
+          onEnter: () => siteHeader.classList.add('theme-cream'),
+          onEnterBack: () => siteHeader.classList.add('theme-cream'),
+          onLeave: () => siteHeader.classList.remove('theme-cream'),
+          onLeaveBack: () => siteHeader.classList.remove('theme-cream')
+        });
+      });
     });
   </script>
 </body>
